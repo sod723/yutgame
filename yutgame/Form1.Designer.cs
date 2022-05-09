@@ -29,14 +29,34 @@ namespace yutgame
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.btnThrow = new System.Windows.Forms.Button();
+            this.txtChat = new System.Windows.Forms.TextBox();
+            this.txtSend = new System.Windows.Forms.TextBox();
+            this.btnRed2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.not7 = new System.Windows.Forms.PictureBox();
+            this.not6 = new System.Windows.Forms.PictureBox();
+            this.not5 = new System.Windows.Forms.PictureBox();
+            this.not4 = new System.Windows.Forms.PictureBox();
+            this.not3 = new System.Windows.Forms.PictureBox();
+            this.not2 = new System.Windows.Forms.PictureBox();
+            this.not1 = new System.Windows.Forms.PictureBox();
+            this.btnRed1 = new System.Windows.Forms.Button();
+            this.btnBlue2 = new System.Windows.Forms.Button();
+            this.btnBlue1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.horsePos30 = new System.Windows.Forms.PictureBox();
             this.horsePos29 = new System.Windows.Forms.PictureBox();
-            this.horsePos28 = new System.Windows.Forms.PictureBox();
             this.horsePos27 = new System.Windows.Forms.PictureBox();
             this.horsePos26 = new System.Windows.Forms.PictureBox();
             this.horsePos25 = new System.Windows.Forms.PictureBox();
             this.horsePos24 = new System.Windows.Forms.PictureBox();
-            this.horsePos23 = new System.Windows.Forms.PictureBox();
+            this.horsePos28 = new System.Windows.Forms.PictureBox();
             this.horsePos22 = new System.Windows.Forms.PictureBox();
             this.horsePos21 = new System.Windows.Forms.PictureBox();
             this.horsePos20 = new System.Windows.Forms.PictureBox();
@@ -59,28 +79,22 @@ namespace yutgame
             this.horsePos3 = new System.Windows.Forms.PictureBox();
             this.horsePos2 = new System.Windows.Forms.PictureBox();
             this.horsePos1 = new System.Windows.Forms.PictureBox();
-            this.btnThrow = new System.Windows.Forms.Button();
-            this.rtbChat = new System.Windows.Forms.RichTextBox();
-            this.txtSend = new System.Windows.Forms.TextBox();
-            this.btnSend = new System.Windows.Forms.Button();
-            this.lblChat = new System.Windows.Forms.Label();
-            this.pnlLogin = new System.Windows.Forms.Panel();
-            this.btnClient = new System.Windows.Forms.Button();
-            this.btnHost = new System.Windows.Forms.Button();
-            this.txtNickname = new System.Windows.Forms.TextBox();
-            this.txtPort = new System.Windows.Forms.TextBox();
-            this.txtIp = new System.Windows.Forms.TextBox();
-            this.lblNick = new System.Windows.Forms.Label();
-            this.lblPort = new System.Windows.Forms.Label();
-            this.lblIp = new System.Windows.Forms.Label();
+            this.imgCharacter = new System.Windows.Forms.ImageList(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.not7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.not6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.not5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.not4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.not3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.not2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.not1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.horsePos30)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.horsePos29)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.horsePos28)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.horsePos27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.horsePos26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.horsePos25)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.horsePos24)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.horsePos23)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.horsePos28)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.horsePos22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.horsePos21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.horsePos20)).BeginInit();
@@ -103,21 +117,195 @@ namespace yutgame
             ((System.ComponentModel.ISupportInitialize)(this.horsePos3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.horsePos2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.horsePos1)).BeginInit();
-            this.pnlLogin.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // btnThrow
+            // 
+            this.btnThrow.Location = new System.Drawing.Point(615, 339);
+            this.btnThrow.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnThrow.Name = "btnThrow";
+            this.btnThrow.Size = new System.Drawing.Size(269, 61);
+            this.btnThrow.TabIndex = 1;
+            this.btnThrow.Text = "윷 던지기";
+            this.btnThrow.UseVisualStyleBackColor = true;
+            this.btnThrow.Click += new System.EventHandler(this.btnThrow_Click);
+            // 
+            // txtChat
+            // 
+            this.txtChat.Location = new System.Drawing.Point(615, 15);
+            this.txtChat.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtChat.Multiline = true;
+            this.txtChat.Name = "txtChat";
+            this.txtChat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtChat.Size = new System.Drawing.Size(268, 220);
+            this.txtChat.TabIndex = 2;
+            // 
+            // txtSend
+            // 
+            this.txtSend.Location = new System.Drawing.Point(615, 246);
+            this.txtSend.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtSend.Name = "txtSend";
+            this.txtSend.Size = new System.Drawing.Size(268, 25);
+            this.txtSend.TabIndex = 3;
+            // 
+            // btnRed2
+            // 
+            this.btnRed2.Image = global::yutgame.Properties.Resources.img_character_04;
+            this.btnRed2.Location = new System.Drawing.Point(710, 532);
+            this.btnRed2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnRed2.Name = "btnRed2";
+            this.btnRed2.Size = new System.Drawing.Size(78, 82);
+            this.btnRed2.TabIndex = 7;
+            this.btnRed2.Text = "Red2";
+            this.btnRed2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnRed2.UseVisualStyleBackColor = true;
+            this.btnRed2.Click += new System.EventHandler(this.btnRed2_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(830, 461);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 15);
+            this.label1.TabIndex = 35;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(858, 461);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 15);
+            this.label2.TabIndex = 36;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(830, 566);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 15);
+            this.label3.TabIndex = 38;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(858, 566);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 15);
+            this.label4.TabIndex = 37;
+            // 
+            // not7
+            // 
+            this.not7.Location = new System.Drawing.Point(123, 622);
+            this.not7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.not7.Name = "not7";
+            this.not7.Size = new System.Drawing.Size(11, 12);
+            this.not7.TabIndex = 34;
+            this.not7.TabStop = false;
+            // 
+            // not6
+            // 
+            this.not6.Location = new System.Drawing.Point(105, 622);
+            this.not6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.not6.Name = "not6";
+            this.not6.Size = new System.Drawing.Size(11, 12);
+            this.not6.TabIndex = 33;
+            this.not6.TabStop = false;
+            // 
+            // not5
+            // 
+            this.not5.Location = new System.Drawing.Point(87, 622);
+            this.not5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.not5.Name = "not5";
+            this.not5.Size = new System.Drawing.Size(11, 12);
+            this.not5.TabIndex = 32;
+            this.not5.TabStop = false;
+            // 
+            // not4
+            // 
+            this.not4.Location = new System.Drawing.Point(69, 622);
+            this.not4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.not4.Name = "not4";
+            this.not4.Size = new System.Drawing.Size(11, 12);
+            this.not4.TabIndex = 31;
+            this.not4.TabStop = false;
+            // 
+            // not3
+            // 
+            this.not3.Location = new System.Drawing.Point(50, 622);
+            this.not3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.not3.Name = "not3";
+            this.not3.Size = new System.Drawing.Size(11, 12);
+            this.not3.TabIndex = 30;
+            this.not3.TabStop = false;
+            // 
+            // not2
+            // 
+            this.not2.Location = new System.Drawing.Point(32, 622);
+            this.not2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.not2.Name = "not2";
+            this.not2.Size = new System.Drawing.Size(11, 12);
+            this.not2.TabIndex = 29;
+            this.not2.TabStop = false;
+            // 
+            // not1
+            // 
+            this.not1.Location = new System.Drawing.Point(14, 622);
+            this.not1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.not1.Name = "not1";
+            this.not1.Size = new System.Drawing.Size(11, 12);
+            this.not1.TabIndex = 28;
+            this.not1.TabStop = false;
+            // 
+            // btnRed1
+            // 
+            this.btnRed1.Image = global::yutgame.Properties.Resources.img_character_03;
+            this.btnRed1.Location = new System.Drawing.Point(615, 532);
+            this.btnRed1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnRed1.Name = "btnRed1";
+            this.btnRed1.Size = new System.Drawing.Size(78, 82);
+            this.btnRed1.TabIndex = 6;
+            this.btnRed1.Text = "Red1";
+            this.btnRed1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnRed1.UseVisualStyleBackColor = true;
+            this.btnRed1.Click += new System.EventHandler(this.btnRed1_Click);
+            // 
+            // btnBlue2
+            // 
+            this.btnBlue2.Image = global::yutgame.Properties.Resources.img_character_02;
+            this.btnBlue2.Location = new System.Drawing.Point(710, 428);
+            this.btnBlue2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnBlue2.Name = "btnBlue2";
+            this.btnBlue2.Size = new System.Drawing.Size(78, 82);
+            this.btnBlue2.TabIndex = 5;
+            this.btnBlue2.Text = "Blue2";
+            this.btnBlue2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnBlue2.UseVisualStyleBackColor = true;
+            this.btnBlue2.Click += new System.EventHandler(this.btnBlue2_Click);
+            // 
+            // btnBlue1
+            // 
+            this.btnBlue1.Image = global::yutgame.Properties.Resources.img_character_01;
+            this.btnBlue1.Location = new System.Drawing.Point(615, 428);
+            this.btnBlue1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnBlue1.Name = "btnBlue1";
+            this.btnBlue1.Size = new System.Drawing.Size(78, 82);
+            this.btnBlue1.TabIndex = 4;
+            this.btnBlue1.Text = "Blue1";
+            this.btnBlue1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnBlue1.UseVisualStyleBackColor = true;
+            this.btnBlue1.Click += new System.EventHandler(this.btnBlue1_Click);
             // 
             // panel1
             // 
-            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BackgroundImage = global::yutgame.Properties.Resources.윷놀이_removebg_preview;
+            this.panel1.Controls.Add(this.horsePos30);
             this.panel1.Controls.Add(this.horsePos29);
-            this.panel1.Controls.Add(this.horsePos28);
             this.panel1.Controls.Add(this.horsePos27);
             this.panel1.Controls.Add(this.horsePos26);
             this.panel1.Controls.Add(this.horsePos25);
             this.panel1.Controls.Add(this.horsePos24);
-            this.panel1.Controls.Add(this.horsePos23);
+            this.panel1.Controls.Add(this.horsePos28);
             this.panel1.Controls.Add(this.horsePos22);
             this.panel1.Controls.Add(this.horsePos21);
             this.panel1.Controls.Add(this.horsePos20);
@@ -146,23 +334,23 @@ namespace yutgame
             this.panel1.Size = new System.Drawing.Size(549, 600);
             this.panel1.TabIndex = 0;
             // 
+            // horsePos30
+            // 
+            this.horsePos30.Location = new System.Drawing.Point(374, 424);
+            this.horsePos30.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.horsePos30.Name = "horsePos30";
+            this.horsePos30.Size = new System.Drawing.Size(61, 64);
+            this.horsePos30.TabIndex = 27;
+            this.horsePos30.TabStop = false;
+            // 
             // horsePos29
             // 
-            this.horsePos29.Location = new System.Drawing.Point(374, 424);
+            this.horsePos29.Location = new System.Drawing.Point(315, 344);
             this.horsePos29.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.horsePos29.Name = "horsePos29";
             this.horsePos29.Size = new System.Drawing.Size(61, 64);
-            this.horsePos29.TabIndex = 27;
+            this.horsePos29.TabIndex = 26;
             this.horsePos29.TabStop = false;
-            // 
-            // horsePos28
-            // 
-            this.horsePos28.Location = new System.Drawing.Point(315, 344);
-            this.horsePos28.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.horsePos28.Name = "horsePos28";
-            this.horsePos28.Size = new System.Drawing.Size(61, 64);
-            this.horsePos28.TabIndex = 26;
-            this.horsePos28.TabStop = false;
             // 
             // horsePos27
             // 
@@ -200,14 +388,14 @@ namespace yutgame
             this.horsePos24.TabIndex = 22;
             this.horsePos24.TabStop = false;
             // 
-            // horsePos23
+            // horsePos28
             // 
-            this.horsePos23.Location = new System.Drawing.Point(245, 269);
-            this.horsePos23.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.horsePos23.Name = "horsePos23";
-            this.horsePos23.Size = new System.Drawing.Size(61, 64);
-            this.horsePos23.TabIndex = 21;
-            this.horsePos23.TabStop = false;
+            this.horsePos28.Location = new System.Drawing.Point(245, 269);
+            this.horsePos28.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.horsePos28.Name = "horsePos28";
+            this.horsePos28.Size = new System.Drawing.Size(61, 64);
+            this.horsePos28.TabIndex = 21;
+            this.horsePos28.TabStop = false;
             // 
             // horsePos22
             // 
@@ -407,160 +595,59 @@ namespace yutgame
             this.horsePos1.TabIndex = 0;
             this.horsePos1.TabStop = false;
             // 
-            // btnThrow
+            // imgCharacter
             // 
-            this.btnThrow.Location = new System.Drawing.Point(603, 554);
-            this.btnThrow.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnThrow.Name = "btnThrow";
-            this.btnThrow.Size = new System.Drawing.Size(269, 61);
-            this.btnThrow.TabIndex = 1;
-            this.btnThrow.Text = "윷 던지기";
-            this.btnThrow.UseVisualStyleBackColor = true;
-            this.btnThrow.Click += new System.EventHandler(this.btnThrow_Click);
-            // 
-            // rtbChat
-            // 
-            this.rtbChat.Location = new System.Drawing.Point(586, 12);
-            this.rtbChat.Name = "rtbChat";
-            this.rtbChat.Size = new System.Drawing.Size(298, 336);
-            this.rtbChat.TabIndex = 2;
-            this.rtbChat.Text = "";
-            // 
-            // txtSend
-            // 
-            this.txtSend.Location = new System.Drawing.Point(651, 359);
-            this.txtSend.Name = "txtSend";
-            this.txtSend.Size = new System.Drawing.Size(162, 25);
-            this.txtSend.TabIndex = 3;
-            // 
-            // btnSend
-            // 
-            this.btnSend.Location = new System.Drawing.Point(819, 359);
-            this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(65, 27);
-            this.btnSend.TabIndex = 4;
-            this.btnSend.Text = "Send";
-            this.btnSend.UseVisualStyleBackColor = true;
-            // 
-            // lblChat
-            // 
-            this.lblChat.AutoSize = true;
-            this.lblChat.Font = new System.Drawing.Font("굴림", 15F);
-            this.lblChat.Location = new System.Drawing.Point(598, 357);
-            this.lblChat.Name = "lblChat";
-            this.lblChat.Size = new System.Drawing.Size(41, 25);
-            this.lblChat.TabIndex = 5;
-            this.lblChat.Text = "0P";
-            // 
-            // pnlLogin
-            // 
-            this.pnlLogin.BackColor = System.Drawing.SystemColors.Info;
-            this.pnlLogin.Controls.Add(this.btnClient);
-            this.pnlLogin.Controls.Add(this.btnHost);
-            this.pnlLogin.Controls.Add(this.txtNickname);
-            this.pnlLogin.Controls.Add(this.txtPort);
-            this.pnlLogin.Controls.Add(this.txtIp);
-            this.pnlLogin.Controls.Add(this.lblNick);
-            this.pnlLogin.Controls.Add(this.lblPort);
-            this.pnlLogin.Controls.Add(this.lblIp);
-            this.pnlLogin.Location = new System.Drawing.Point(603, 392);
-            this.pnlLogin.Name = "pnlLogin";
-            this.pnlLogin.Size = new System.Drawing.Size(264, 155);
-            this.pnlLogin.TabIndex = 28;
-            // 
-            // btnClient
-            // 
-            this.btnClient.Location = new System.Drawing.Point(152, 118);
-            this.btnClient.Name = "btnClient";
-            this.btnClient.Size = new System.Drawing.Size(90, 26);
-            this.btnClient.TabIndex = 7;
-            this.btnClient.Text = "입장";
-            this.btnClient.UseVisualStyleBackColor = true;
-            // 
-            // btnHost
-            // 
-            this.btnHost.Location = new System.Drawing.Point(41, 118);
-            this.btnHost.Name = "btnHost";
-            this.btnHost.Size = new System.Drawing.Size(90, 26);
-            this.btnHost.TabIndex = 6;
-            this.btnHost.Text = "생성";
-            this.btnHost.UseVisualStyleBackColor = true;
-            // 
-            // txtNickname
-            // 
-            this.txtNickname.Location = new System.Drawing.Point(85, 78);
-            this.txtNickname.Name = "txtNickname";
-            this.txtNickname.Size = new System.Drawing.Size(123, 25);
-            this.txtNickname.TabIndex = 5;
-            // 
-            // txtPort
-            // 
-            this.txtPort.Location = new System.Drawing.Point(85, 44);
-            this.txtPort.Name = "txtPort";
-            this.txtPort.Size = new System.Drawing.Size(123, 25);
-            this.txtPort.TabIndex = 4;
-            // 
-            // txtIp
-            // 
-            this.txtIp.Location = new System.Drawing.Point(85, 6);
-            this.txtIp.Name = "txtIp";
-            this.txtIp.Size = new System.Drawing.Size(123, 25);
-            this.txtIp.TabIndex = 3;
-            // 
-            // lblNick
-            // 
-            this.lblNick.AutoSize = true;
-            this.lblNick.Font = new System.Drawing.Font("굴림", 10F);
-            this.lblNick.Location = new System.Drawing.Point(9, 80);
-            this.lblNick.Name = "lblNick";
-            this.lblNick.Size = new System.Drawing.Size(59, 17);
-            this.lblNick.TabIndex = 2;
-            this.lblNick.Text = "닉네임";
-            // 
-            // lblPort
-            // 
-            this.lblPort.AutoSize = true;
-            this.lblPort.Font = new System.Drawing.Font("굴림", 10F);
-            this.lblPort.Location = new System.Drawing.Point(14, 47);
-            this.lblPort.Name = "lblPort";
-            this.lblPort.Size = new System.Drawing.Size(49, 17);
-            this.lblPort.TabIndex = 1;
-            this.lblPort.Text = "PORT";
-            // 
-            // lblIp
-            // 
-            this.lblIp.AutoSize = true;
-            this.lblIp.Font = new System.Drawing.Font("굴림", 10F);
-            this.lblIp.Location = new System.Drawing.Point(14, 16);
-            this.lblIp.Name = "lblIp";
-            this.lblIp.Size = new System.Drawing.Size(21, 17);
-            this.lblIp.TabIndex = 0;
-            this.lblIp.Text = "IP";
+            this.imgCharacter.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgCharacter.ImageStream")));
+            this.imgCharacter.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgCharacter.Images.SetKeyName(0, "blue1.png");
+            this.imgCharacter.Images.SetKeyName(1, "blue2.png");
+            this.imgCharacter.Images.SetKeyName(2, "red1.png");
+            this.imgCharacter.Images.SetKeyName(3, "red2.png");
+            this.imgCharacter.Images.SetKeyName(4, "blue_with.png");
+            this.imgCharacter.Images.SetKeyName(5, "red_with.png");
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(911, 641);
-            this.Controls.Add(this.pnlLogin);
-            this.Controls.Add(this.lblChat);
-            this.Controls.Add(this.btnSend);
+            this.ClientSize = new System.Drawing.Size(914, 641);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.not7);
+            this.Controls.Add(this.not6);
+            this.Controls.Add(this.not5);
+            this.Controls.Add(this.not4);
+            this.Controls.Add(this.not3);
+            this.Controls.Add(this.not2);
+            this.Controls.Add(this.not1);
+            this.Controls.Add(this.btnRed2);
+            this.Controls.Add(this.btnRed1);
+            this.Controls.Add(this.btnBlue2);
+            this.Controls.Add(this.btnBlue1);
             this.Controls.Add(this.txtSend);
-            this.Controls.Add(this.rtbChat);
+            this.Controls.Add(this.txtChat);
             this.Controls.Add(this.btnThrow);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.not7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.not6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.not5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.not4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.not3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.not2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.not1)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.horsePos30)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.horsePos29)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.horsePos28)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.horsePos27)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.horsePos26)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.horsePos25)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.horsePos24)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.horsePos23)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.horsePos28)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.horsePos22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.horsePos21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.horsePos20)).EndInit();
@@ -583,8 +670,6 @@ namespace yutgame
             ((System.ComponentModel.ISupportInitialize)(this.horsePos3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.horsePos2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.horsePos1)).EndInit();
-            this.pnlLogin.ResumeLayout(false);
-            this.pnlLogin.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -593,13 +678,13 @@ namespace yutgame
         #endregion
 
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox horsePos30;
         private System.Windows.Forms.PictureBox horsePos29;
-        private System.Windows.Forms.PictureBox horsePos28;
         private System.Windows.Forms.PictureBox horsePos27;
         private System.Windows.Forms.PictureBox horsePos26;
         private System.Windows.Forms.PictureBox horsePos25;
         private System.Windows.Forms.PictureBox horsePos24;
-        private System.Windows.Forms.PictureBox horsePos23;
+        private System.Windows.Forms.PictureBox horsePos28;
         private System.Windows.Forms.PictureBox horsePos22;
         private System.Windows.Forms.PictureBox horsePos21;
         private System.Windows.Forms.PictureBox horsePos20;
@@ -623,19 +708,24 @@ namespace yutgame
         private System.Windows.Forms.PictureBox horsePos2;
         private System.Windows.Forms.PictureBox horsePos1;
         private System.Windows.Forms.Button btnThrow;
-        private System.Windows.Forms.RichTextBox rtbChat;
+        private System.Windows.Forms.TextBox txtChat;
         private System.Windows.Forms.TextBox txtSend;
-        private System.Windows.Forms.Button btnSend;
-        private System.Windows.Forms.Label lblChat;
-        private System.Windows.Forms.Panel pnlLogin;
-        private System.Windows.Forms.Button btnClient;
-        private System.Windows.Forms.Button btnHost;
-        private System.Windows.Forms.TextBox txtNickname;
-        private System.Windows.Forms.TextBox txtPort;
-        private System.Windows.Forms.TextBox txtIp;
-        private System.Windows.Forms.Label lblNick;
-        private System.Windows.Forms.Label lblPort;
-        private System.Windows.Forms.Label lblIp;
+        private System.Windows.Forms.Button btnBlue1;
+        private System.Windows.Forms.Button btnBlue2;
+        private System.Windows.Forms.Button btnRed1;
+        private System.Windows.Forms.Button btnRed2;
+        private System.Windows.Forms.PictureBox not1;
+        private System.Windows.Forms.PictureBox not2;
+        private System.Windows.Forms.PictureBox not3;
+        private System.Windows.Forms.PictureBox not4;
+        private System.Windows.Forms.PictureBox not5;
+        private System.Windows.Forms.PictureBox not6;
+        private System.Windows.Forms.PictureBox not7;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ImageList imgCharacter;
     }
 }
 
