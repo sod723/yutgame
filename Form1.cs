@@ -1400,5 +1400,11 @@ namespace yutgame
             }
             finish();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form2 fm2 = new Form2();
+            fm2.Show();
+        }
     }
 }

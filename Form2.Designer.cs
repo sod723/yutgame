@@ -29,19 +29,23 @@ namespace yutgame
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.Servercnt = new System.Windows.Forms.ListBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.Connectcnt = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // listBox1
+            // Servercnt
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(35, 158);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(789, 316);
-            this.listBox1.TabIndex = 0;
+            this.Servercnt.FormattingEnabled = true;
+            this.Servercnt.ItemHeight = 12;
+            this.Servercnt.Location = new System.Drawing.Point(35, 81);
+            this.Servercnt.Name = "Servercnt";
+            this.Servercnt.Size = new System.Drawing.Size(789, 316);
+            this.Servercnt.TabIndex = 0;
             // 
             // checkedListBox1
             // 
@@ -51,33 +55,68 @@ namespace yutgame
             this.checkedListBox1.Size = new System.Drawing.Size(13, 4);
             this.checkedListBox1.TabIndex = 1;
             // 
-            // listView1
+            // Connectcnt
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(472, 158);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(352, 316);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.Connectcnt.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.Connectcnt.HideSelection = false;
+            this.Connectcnt.Location = new System.Drawing.Point(472, 81);
+            this.Connectcnt.Name = "Connectcnt";
+            this.Connectcnt.Size = new System.Drawing.Size(352, 316);
+            this.Connectcnt.TabIndex = 2;
+            this.Connectcnt.UseCompatibleStateImageBehavior = false;
+            this.Connectcnt.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "IP";
+            this.columnHeader1.Width = 350;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label1.Font = new System.Drawing.Font("굴림", 15F);
+            this.label1.Location = new System.Drawing.Point(584, 53);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(119, 23);
+            this.label1.TabIndex = 3;
+            this.label1.Text = " 접속중인 IP";
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label2.Font = new System.Drawing.Font("굴림", 15F);
+            this.label2.Location = new System.Drawing.Point(185, 53);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(112, 23);
+            this.label2.TabIndex = 4;
+            this.label2.Text = " 서버 상태";
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(836, 529);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Connectcnt);
             this.Controls.Add(this.checkedListBox1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.Servercnt);
             this.Name = "Form2";
             this.Text = "Form2";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox Servercnt;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView Connectcnt;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

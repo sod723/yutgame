@@ -16,5 +16,12 @@ namespace yutgame
         {
             InitializeComponent();
         }
+
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
+
+        }
     }
 }
