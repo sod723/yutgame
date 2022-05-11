@@ -83,8 +83,8 @@ namespace yutgame
             this.Servercnt = new System.Windows.Forms.Button();
             this.IP = new System.Windows.Forms.Label();
             this.PORT = new System.Windows.Forms.Label();
-            this.ServerStart = new System.Windows.Forms.Button();
-            this.ServerStop = new System.Windows.Forms.Button();
+            this.btn_Server = new System.Windows.Forms.Button();
+            this.btn_Connect = new System.Windows.Forms.Button();
             this.PORT_Number = new System.Windows.Forms.TextBox();
             this.IP_Address = new System.Windows.Forms.TextBox();
             this.Send_Message = new System.Windows.Forms.Button();
@@ -152,6 +152,7 @@ namespace yutgame
             this.txtSend.Name = "txtSend";
             this.txtSend.Size = new System.Drawing.Size(167, 21);
             this.txtSend.TabIndex = 3;
+            this.txtSend.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSend_KeyDown);
             // 
             // label1
             // 
@@ -598,23 +599,25 @@ namespace yutgame
             this.PORT.TabIndex = 41;
             this.PORT.Text = "PORT";
             // 
-            // ServerStart
+            // btn_Server
             // 
-            this.ServerStart.Location = new System.Drawing.Point(531, 313);
-            this.ServerStart.Name = "ServerStart";
-            this.ServerStart.Size = new System.Drawing.Size(75, 23);
-            this.ServerStart.TabIndex = 42;
-            this.ServerStart.Text = "생성";
-            this.ServerStart.UseVisualStyleBackColor = true;
+            this.btn_Server.Location = new System.Drawing.Point(531, 313);
+            this.btn_Server.Name = "btn_Server";
+            this.btn_Server.Size = new System.Drawing.Size(75, 23);
+            this.btn_Server.TabIndex = 42;
+            this.btn_Server.Text = "생성";
+            this.btn_Server.UseVisualStyleBackColor = true;
+            this.btn_Server.Click += new System.EventHandler(this.btn_Server_Click);
             // 
-            // ServerStop
+            // btn_Connect
             // 
-            this.ServerStop.Location = new System.Drawing.Point(614, 313);
-            this.ServerStop.Name = "ServerStop";
-            this.ServerStop.Size = new System.Drawing.Size(75, 23);
-            this.ServerStop.TabIndex = 43;
-            this.ServerStop.Text = "연결";
-            this.ServerStop.UseVisualStyleBackColor = true;
+            this.btn_Connect.Location = new System.Drawing.Point(614, 313);
+            this.btn_Connect.Name = "btn_Connect";
+            this.btn_Connect.Size = new System.Drawing.Size(75, 23);
+            this.btn_Connect.TabIndex = 43;
+            this.btn_Connect.Text = "연결";
+            this.btn_Connect.UseVisualStyleBackColor = true;
+            this.btn_Connect.Click += new System.EventHandler(this.btn_Connect_Click);
             // 
             // PORT_Number
             // 
@@ -638,6 +641,7 @@ namespace yutgame
             this.Send_Message.TabIndex = 46;
             this.Send_Message.Text = "전송";
             this.Send_Message.UseVisualStyleBackColor = true;
+            this.Send_Message.Click += new System.EventHandler(this.Send_Message_Click);
             // 
             // Form1
             // 
@@ -647,8 +651,8 @@ namespace yutgame
             this.Controls.Add(this.Send_Message);
             this.Controls.Add(this.IP_Address);
             this.Controls.Add(this.PORT_Number);
-            this.Controls.Add(this.ServerStop);
-            this.Controls.Add(this.ServerStart);
+            this.Controls.Add(this.btn_Connect);
+            this.Controls.Add(this.btn_Server);
             this.Controls.Add(this.PORT);
             this.Controls.Add(this.IP);
             this.Controls.Add(this.Servercnt);
@@ -769,8 +773,8 @@ namespace yutgame
         private System.Windows.Forms.Button Servercnt;
         private System.Windows.Forms.Label IP;
         private System.Windows.Forms.Label PORT;
-        private System.Windows.Forms.Button ServerStart;
-        private System.Windows.Forms.Button ServerStop;
+        private System.Windows.Forms.Button btn_Server;
+        private System.Windows.Forms.Button btn_Connect;
         private System.Windows.Forms.TextBox PORT_Number;
         private System.Windows.Forms.TextBox IP_Address;
         public System.Windows.Forms.Button Send_Message;
