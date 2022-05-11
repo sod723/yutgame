@@ -81,6 +81,13 @@ namespace yutgame
             this.horsePos2 = new System.Windows.Forms.PictureBox();
             this.horsePos1 = new System.Windows.Forms.PictureBox();
             this.Servercnt = new System.Windows.Forms.Button();
+            this.IP = new System.Windows.Forms.Label();
+            this.PORT = new System.Windows.Forms.Label();
+            this.ServerStart = new System.Windows.Forms.Button();
+            this.ServerStop = new System.Windows.Forms.Button();
+            this.PORT_Number = new System.Windows.Forms.TextBox();
+            this.IP_Address = new System.Windows.Forms.TextBox();
+            this.Send_Message = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.not7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.not6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.not5)).BeginInit();
@@ -122,9 +129,9 @@ namespace yutgame
             // 
             // btnThrow
             // 
-            this.btnThrow.Location = new System.Drawing.Point(538, 271);
+            this.btnThrow.Location = new System.Drawing.Point(711, 382);
             this.btnThrow.Name = "btnThrow";
-            this.btnThrow.Size = new System.Drawing.Size(235, 49);
+            this.btnThrow.Size = new System.Drawing.Size(75, 68);
             this.btnThrow.TabIndex = 1;
             this.btnThrow.Text = "윷 던지기";
             this.btnThrow.UseVisualStyleBackColor = true;
@@ -143,7 +150,7 @@ namespace yutgame
             // 
             this.txtSend.Location = new System.Drawing.Point(538, 197);
             this.txtSend.Name = "txtSend";
-            this.txtSend.Size = new System.Drawing.Size(235, 21);
+            this.txtSend.Size = new System.Drawing.Size(167, 21);
             this.txtSend.TabIndex = 3;
             // 
             // label1
@@ -565,7 +572,7 @@ namespace yutgame
             // 
             // Servercnt
             // 
-            this.Servercnt.Location = new System.Drawing.Point(698, 242);
+            this.Servercnt.Location = new System.Drawing.Point(698, 247);
             this.Servercnt.Name = "Servercnt";
             this.Servercnt.Size = new System.Drawing.Size(75, 23);
             this.Servercnt.TabIndex = 39;
@@ -573,11 +580,77 @@ namespace yutgame
             this.Servercnt.UseVisualStyleBackColor = true;
             this.Servercnt.Click += new System.EventHandler(this.button1_Click);
             // 
+            // IP
+            // 
+            this.IP.AutoSize = true;
+            this.IP.Location = new System.Drawing.Point(507, 252);
+            this.IP.Name = "IP";
+            this.IP.Size = new System.Drawing.Size(16, 12);
+            this.IP.TabIndex = 40;
+            this.IP.Text = "IP";
+            // 
+            // PORT
+            // 
+            this.PORT.AutoSize = true;
+            this.PORT.Location = new System.Drawing.Point(498, 290);
+            this.PORT.Name = "PORT";
+            this.PORT.Size = new System.Drawing.Size(38, 12);
+            this.PORT.TabIndex = 41;
+            this.PORT.Text = "PORT";
+            // 
+            // ServerStart
+            // 
+            this.ServerStart.Location = new System.Drawing.Point(531, 313);
+            this.ServerStart.Name = "ServerStart";
+            this.ServerStart.Size = new System.Drawing.Size(75, 23);
+            this.ServerStart.TabIndex = 42;
+            this.ServerStart.Text = "생성";
+            this.ServerStart.UseVisualStyleBackColor = true;
+            // 
+            // ServerStop
+            // 
+            this.ServerStop.Location = new System.Drawing.Point(614, 313);
+            this.ServerStop.Name = "ServerStop";
+            this.ServerStop.Size = new System.Drawing.Size(75, 23);
+            this.ServerStop.TabIndex = 43;
+            this.ServerStop.Text = "연결";
+            this.ServerStop.UseVisualStyleBackColor = true;
+            // 
+            // PORT_Number
+            // 
+            this.PORT_Number.Location = new System.Drawing.Point(549, 287);
+            this.PORT_Number.Name = "PORT_Number";
+            this.PORT_Number.Size = new System.Drawing.Size(140, 21);
+            this.PORT_Number.TabIndex = 44;
+            // 
+            // IP_Address
+            // 
+            this.IP_Address.Location = new System.Drawing.Point(549, 247);
+            this.IP_Address.Name = "IP_Address";
+            this.IP_Address.Size = new System.Drawing.Size(140, 21);
+            this.IP_Address.TabIndex = 45;
+            // 
+            // Send_Message
+            // 
+            this.Send_Message.Location = new System.Drawing.Point(711, 195);
+            this.Send_Message.Name = "Send_Message";
+            this.Send_Message.Size = new System.Drawing.Size(75, 23);
+            this.Send_Message.TabIndex = 46;
+            this.Send_Message.Text = "전송";
+            this.Send_Message.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 513);
+            this.Controls.Add(this.Send_Message);
+            this.Controls.Add(this.IP_Address);
+            this.Controls.Add(this.PORT_Number);
+            this.Controls.Add(this.ServerStop);
+            this.Controls.Add(this.ServerStart);
+            this.Controls.Add(this.PORT);
+            this.Controls.Add(this.IP);
             this.Controls.Add(this.Servercnt);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
@@ -694,6 +767,13 @@ namespace yutgame
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ImageList imgCharacter;
         private System.Windows.Forms.Button Servercnt;
+        private System.Windows.Forms.Label IP;
+        private System.Windows.Forms.Label PORT;
+        private System.Windows.Forms.Button ServerStart;
+        private System.Windows.Forms.Button ServerStop;
+        private System.Windows.Forms.TextBox PORT_Number;
+        private System.Windows.Forms.TextBox IP_Address;
+        public System.Windows.Forms.Button Send_Message;
     }
 }
 

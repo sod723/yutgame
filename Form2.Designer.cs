@@ -29,7 +29,7 @@ namespace yutgame
         /// </summary>
         private void InitializeComponent()
         {
-            this.Servercnt = new System.Windows.Forms.ListBox();
+            this.ServerCurrent = new System.Windows.Forms.ListBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.Connectcnt = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -38,14 +38,14 @@ namespace yutgame
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // Servercnt
+            // ServerCurrent
             // 
-            this.Servercnt.FormattingEnabled = true;
-            this.Servercnt.ItemHeight = 12;
-            this.Servercnt.Location = new System.Drawing.Point(35, 81);
-            this.Servercnt.Name = "Servercnt";
-            this.Servercnt.Size = new System.Drawing.Size(789, 316);
-            this.Servercnt.TabIndex = 0;
+            this.ServerCurrent.FormattingEnabled = true;
+            this.ServerCurrent.ItemHeight = 12;
+            this.ServerCurrent.Location = new System.Drawing.Point(35, 81);
+            this.ServerCurrent.Name = "ServerCurrent";
+            this.ServerCurrent.Size = new System.Drawing.Size(789, 316);
+            this.ServerCurrent.TabIndex = 0;
             // 
             // checkedListBox1
             // 
@@ -101,7 +101,7 @@ namespace yutgame
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Connectcnt);
             this.Controls.Add(this.checkedListBox1);
-            this.Controls.Add(this.Servercnt);
+            this.Controls.Add(this.ServerCurrent);
             this.Name = "Form2";
             this.Text = "Form2";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
@@ -111,7 +111,7 @@ namespace yutgame
 
         #endregion
 
-        private System.Windows.Forms.ListBox Servercnt;
+        private System.Windows.Forms.ListBox ServerCurrent;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.ListView Connectcnt;
         private System.Windows.Forms.ColumnHeader columnHeader1;
