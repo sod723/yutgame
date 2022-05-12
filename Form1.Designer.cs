@@ -579,7 +579,7 @@ namespace yutgame
             this.Servercnt.TabIndex = 39;
             this.Servercnt.Text = "서버 현황";
             this.Servercnt.UseVisualStyleBackColor = true;
-            this.Servercnt.Click += new System.EventHandler(this.button1_Click);
+            this.Servercnt.Click += new System.EventHandler(this.Servercnt_Click);
             // 
             // IP
             // 
