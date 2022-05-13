@@ -10,3 +10,14 @@ C:\Users\HC\Desktop\yutgame-ggoniggoni\obj\Debug\yutgame.csproj.GenerateResource
 C:\Users\HC\Desktop\yutgame-ggoniggoni\obj\Debug\yutgame.csproj.CoreCompileInputs.cache
 C:\Users\HC\Desktop\yutgame-ggoniggoni\obj\Debug\yutgame.exe
 C:\Users\HC\Desktop\yutgame-ggoniggoni\obj\Debug\yutgame.pdb
+C:\Users\sod72\Downloads\yutgame-mjswindells (1)\yutgame-mjswindells\bin\Debug\yutgame.exe.config
+C:\Users\sod72\Downloads\yutgame-mjswindells (1)\yutgame-mjswindells\bin\Debug\yutgame.exe
+C:\Users\sod72\Downloads\yutgame-mjswindells (1)\yutgame-mjswindells\bin\Debug\yutgame.pdb
+C:\Users\sod72\Downloads\yutgame-mjswindells (1)\yutgame-mjswindells\obj\Debug\yutgame.csprojAssemblyReference.cache
+C:\Users\sod72\Downloads\yutgame-mjswindells (1)\yutgame-mjswindells\obj\Debug\yutgame.Form1.resources
+C:\Users\sod72\Downloads\yutgame-mjswindells (1)\yutgame-mjswindells\obj\Debug\yutgame.Form2.resources
+C:\Users\sod72\Downloads\yutgame-mjswindells (1)\yutgame-mjswindells\obj\Debug\yutgame.Properties.Resources.resources
+C:\Users\sod72\Downloads\yutgame-mjswindells (1)\yutgame-mjswindells\obj\Debug\yutgame.csproj.GenerateResource.cache
+C:\Users\sod72\Downloads\yutgame-mjswindells (1)\yutgame-mjswindells\obj\Debug\yutgame.csproj.CoreCompileInputs.cache
+C:\Users\sod72\Downloads\yutgame-mjswindells (1)\yutgame-mjswindells\obj\Debug\yutgame.exe
+C:\Users\sod72\Downloads\yutgame-mjswindells (1)\yutgame-mjswindells\obj\Debug\yutgame.pdb
