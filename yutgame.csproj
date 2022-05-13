@@ -93,8 +93,10 @@
     <None Include="Resources\윷놀이-removebg-preview.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\blue_with.png" />
     <Content Include="Resources\img_character_05.png" />
     <Content Include="Resources\img_character_06.png" />
+    <Content Include="Resources\red_with.png" />
     <EmbeddedResource Include="Resources\img_character_01.png" />
     <Content Include="Resources\img_character_02.png" />
     <Content Include="Resources\img_character_03.png" />
