@@ -26,12 +26,7 @@ namespace yutgame
         int count2 = 0;
         int count3 = 0;
         int count4 = 0;
-        
-        int ccnt;
-        int ccnt1;
-        int ccnt2;
-        int ccnt3;
-        
+
         int outlineCnt1 = 0;
         int outlineCnt2 = 0;
         int outlineCnt3 = 0;
@@ -99,6 +94,8 @@ namespace yutgame
             }
 
             if (check) {
+                blue = false;
+                red = false;
                 firstShortCutCnt1 = 0;
                 firstShortCutCnt2 = 0;
                 firstShortCutCnt3 = 0;
@@ -153,10 +150,8 @@ namespace yutgame
         }
 
         // 말 잡혔을 때 clear
-        public void clear(int dol)
-        {
-            switch (dol)
-            {
+        public void clear(int dol) {
+            switch (dol) {
                 //blue 1
                 case 1:
                     outlineCnt1 = 0;
@@ -166,6 +161,7 @@ namespace yutgame
                     firstShortCutCheck1 = 0;
                     centerShortCutCheck1 = 0;
                     lastShortCutCheck1 = 0;
+                    blue = false;
                     break;
                 //blue2
                 case 2:
@@ -176,6 +172,7 @@ namespace yutgame
                     firstShortCutCheck2 = 0;
                     centerShortCutCheck2 = 0;
                     lastShortCutCheck2 = 0;
+                    blue = false;
                     break;
                 //red1
                 case 3:
@@ -186,6 +183,7 @@ namespace yutgame
                     firstShortCutCheck3 = 0;
                     centerShortCutCheck3 = 0;
                     lastShortCutCheck3 = 0;
+                    red = false;
                     break;
                 //red2
                 case 4:
@@ -196,6 +194,7 @@ namespace yutgame
                     firstShortCutCheck4 = 0;
                     centerShortCutCheck4 = 0;
                     lastShortCutCheck4 = 0;
+                    red = false;
                     break;
             }
         }
@@ -261,205 +260,167 @@ namespace yutgame
                         {
                             //아웃라인 전진
                             outlineCnt1 += num; 
-                            
+                            if (outlineCnt1 == 0) outlineCnt1 = 20;
                             //백도 처리
                             if(outlineCnt1 == -1) {
                                 horsePos1.Image = blue1;
                                 outlineCnt1 = 20;
+                                pb1[outlineCnt1].Image = (Image)blue1;
                             }
 
                             // ccnt가 1일때 즉 1P의말이 겹쳣을때를 말하는 코드이다.
-                            if (ccnt == 1)  
-                            {
-                                pb1[count1].Image = (Image)blue_with;
-                                ccnt = 0;
-                            }
+                            if (blue)  pb1[outlineCnt1].Image = (Image)blue_with;
 
                             // 1P의 두개의돌이 만났을때
-                            if (pb1[outlineCnt1].Image == (Image)blue2)
-                            {
-                                count1 = outlineCnt1; //count1에 outlineCnt1값을 넣어준다
-                                ccnt = 1; // ccnt는 1로 변경해준다.
-                                pb1[count1].Image = (Image)blue_with;
+                            if (pb1[outlineCnt1].Image == (Image)blue2) {
+                                outlineCnt2 = outlineCnt1; //count1에 outlineCnt1값을 넣어준다
+                                blue = true;
+                                pb1[outlineCnt1].Image = (Image)blue_with;
                             }
 
                             //1P의 돌이 2P의 돌을 만낫을때
-                            if (outlineCnt1 < 21)
-                            {
+                            if (outlineCnt1 < 21) {
                                 //1P의 돌이 2P 첫번째돌을 만낫을때
-                                if (pb1[outlineCnt1].Image == (Image)red1) 
-                                {
-                                    pb1[outlineCnt1].Image = (Image)blue1;
+                                if (pb1[outlineCnt1].Image == (Image)red1) {
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
-                                    clear(3);
-
+                                    clear(3); 
                                 }
                                 // 1P의 돌이 2P의 두번째돌을 만났을때
-                                if (pb1[outlineCnt1].Image == (Image)red2) 
-                                {
-                                    pb1[outlineCnt1].Image = (Image)blue1;
+                                if (pb1[outlineCnt1].Image == (Image)red2) {
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
                                     clear(4);
                                 }
-                                if (pb1[outlineCnt1].Image == (Image)red_with) 
-                                {
-                                    pb1[outlineCnt1].Image = (Image)blue1;
+                                if (pb1[outlineCnt1].Image == (Image)red_with) {
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
                                     clear(3);
                                     clear(4);
                                 }
                             }
-                            pb1[outlineCnt1].Image = (Image)blue1;
+                            if(blue) pb1[outlineCnt1].Image = (Image)blue_with;
+                            else pb1[outlineCnt1].Image = (Image)blue1;
                         }
                     }
                 }
                 //첫 지름길에서 yes를 한경우
-                if (firstShortCutCheck1 == 1)
-                {
+                if (firstShortCutCheck1 == 1) {
                     pb2[firstShortCutCnt1].Image = null;
-                    if (outlineCnt1 == 5) 
-                    {
+                    if (outlineCnt1 == 5) {
                         outlineCnt1++;
                     }
-                    if (firstShortCutCnt1 < 13)
-                    {
+                    if (firstShortCutCnt1 < 13) {
                         // 중앙 지름길로 가지않앗을때
-                        if (centerShortCutCheck1 != 1) 
-                        {
+                        if (centerShortCutCheck1 != 1) {
                             firstShortCutCnt1 += num;
-                            if (ccnt1 == 1)
-                            {
-                                pb2[count1].Image = (Image)blue_with;
-                                ccnt1 = 0;
-                            }                          
-                            if (pb2[outlineCnt1].Image == (Image)blue1)
-                            {
-                                count1 = firstShortCutCnt1;
-                                ccnt1 = 1;
-                            }
-                            if (firstShortCutCnt1 < 12)
-                            {
-                                if (pb2[firstShortCutCnt1].Image == (Image)red1)
-                                {
-                                    pb2[firstShortCutCnt1].Image = (Image)blue1;                                  
+                            if (firstShortCutCnt1 == 0) firstShortCutCnt1 = 0;
+
+                            if (blue) pb2[firstShortCutCheck1].Image = (Image)blue_with; 
+                            //if (pb2[outlineCnt1].Image == (Image)blue1) count1 = firstShortCutCnt1;
+
+                            if (firstShortCutCnt1 < 12) {
+                                if (pb2[firstShortCutCnt1].Image == (Image)red1) {
+                                    if(blue) pb2[firstShortCutCheck1].Image = (Image)blue_with;
+                                    else pb2[firstShortCutCnt1].Image = (Image)blue1;                                  
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
                                     clear(3);
                                 }
-                                if (pb2[firstShortCutCnt1].Image == (Image)red2)
-                                {
-                                    pb2[firstShortCutCnt1].Image = (Image)blue1;                                   
+                                if (pb2[firstShortCutCnt1].Image == (Image)red2) {
+                                    if(blue) pb2[firstShortCutCheck1].Image = (Image)blue_with;
+                                    else pb2[firstShortCutCnt1].Image = (Image)blue1;                                  
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
                                     clear(4);
                                 }
-                                if (pb2[firstShortCutCnt1].Image == (Image)red_with)
-                                {
-                                    pb2[firstShortCutCnt1].Image = (Image)blue1;                                   
+                                if (pb2[firstShortCutCnt1].Image == (Image)red_with) {
+                                    if(blue) pb2[firstShortCutCheck1].Image = (Image)blue_with;
+                                    else pb2[firstShortCutCnt1].Image = (Image)blue1;                                  
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
                                     clear(3);
                                     clear(4);
                                 }
                             }
-                            pb2[firstShortCutCnt1].Image = (Image)blue1;
+                            if(blue) pb2[firstShortCutCheck1].Image = (Image)blue_with;
+                            else pb2[firstShortCutCnt1].Image = (Image)blue1;                                  
                         }
                     }
                 }
 
                 // 중앙 지름길에서 Yes를 한경우
-                if (centerShortCutCheck1 == 1) 
-                {
-
+                if (centerShortCutCheck1 == 1) { 
                     pb3[3 + centerShortCutCnt1].Image = null;
-                    if (firstShortCutCnt1 == 3) 
-                    {
+                    if (firstShortCutCnt1 == 3) {
                         firstShortCutCnt1++;
                     }
-                    if (centerShortCutCnt1 < 5)
-                    {
-
+                    if (centerShortCutCnt1 < 5) { 
                         centerShortCutCnt1 += num;
-                        if (ccnt1 == 1)
-                        {
-                            pb3[count1].Image = (Image)blue_with;
-                            ccnt1 = 0;
-                        }
+
+                        if (blue) pb3[centerShortCutCheck1].Image = (Image)blue_with;
                         if (pb3[count1].Image == (Image)blue1) 
                         {                                                            
                             count1 = 3 + centerShortCutCnt1;
-                            ccnt1 = 1;
                         }
                   
-                        if (centerShortCutCnt1 < 4)
-                        {
-                            if (pb3[3 + centerShortCutCnt1].Image == (Image)red1)
-                            {
-                                pb3[count1].Image = (Image)blue1;
+                        if (centerShortCutCnt1 < 4) {
+                            if (pb3[3 + centerShortCutCnt1].Image == (Image)red1) {
+                                if(blue) pb3[count1].Image = (Image)blue_with;
+                                else pb3[count1].Image = (Image)blue1;
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
                                 clear(3);
                             }
-                            if (pb3[3 + centerShortCutCnt1].Image == (Image)red2)
-                            {
-                                pb3[count1].Image = (Image)blue2;
+                            if (pb3[3 + centerShortCutCnt1].Image == (Image)red2) {
+                                if(blue) pb3[count1].Image = (Image)blue_with;
+                                else pb3[count1].Image = (Image)blue1;
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
                                 clear(4);
                             }
-                            if (pb3[3 + centerShortCutCnt1].Image == (Image)red_with)
-                            {
-                                pb3[count1].Image = (Image)blue2;
+                            if (pb3[3 + centerShortCutCnt1].Image == (Image)red_with) {
+                                if(blue) pb3[count1].Image = (Image)blue_with;
+                                else pb3[count1].Image = (Image)blue1;
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
                                 clear(3);
                                 clear(4);
                             }
                         }
-                        pb3[3 + centerShortCutCnt1].Image = (Image)blue1;
+                        if(blue) pb3[count1].Image = (Image)blue_with;
+                        else pb3[count1].Image = (Image)blue1;
                     }
                 }
 
                 // 2번째 지름길에서 Yes를 한경우
-                if (lastShortCutCheck1 == 1) 
-                {
-
+                if (lastShortCutCheck1 == 1) { 
                     pb3[lastShortCutCnt1].Image = null;
-                    if (outlineCnt1 == 10)
-                    {
+                    if (outlineCnt1 == 10) {
                         outlineCnt1++;
                     }
-                    if (lastShortCutCnt1 < 8)
-                    {
+                    if (lastShortCutCnt1 < 8) {
                         lastShortCutCnt1 = lastShortCutCnt1 + num;
 
-                        if (ccnt1 == 1)
-                        {
-                            pb3[count1].Image = (Image)blue_with;
-                            ccnt1 = 0;
-                        }
+                        if (blue) pb3[count1].Image = (Image)blue_with;
                         if (pb3[lastShortCutCnt1].Image == (Image)blue1)
                         {
                             count1 = lastShortCutCnt1;
-                            ccnt1 = 1;
                         }
-                        if (lastShortCutCnt1 < 7)
-                        {
-                            if (pb3[lastShortCutCnt1].Image == (Image)red1)
-                            {
-                                pb3[lastShortCutCnt1].Image = (Image)blue1;
+                        if (lastShortCutCnt1 < 7) {
+                            if (pb3[lastShortCutCnt1].Image == (Image)red1) {
+                                if(blue) pb3[lastShortCutCheck1].Image = (Image)blue_with;
+                                else pb3[lastShortCutCnt1].Image = (Image)blue1;
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
                                 clear(3);
                             }
-                            if (pb3[lastShortCutCnt1].Image == (Image)red2)
-                            {
-                                pb3[lastShortCutCnt1].Image = (Image)blue1;
+                            if (pb3[lastShortCutCnt1].Image == (Image)red2) {
+                                if(blue) pb3[lastShortCutCheck1].Image = (Image)blue_with;
+                                else pb3[lastShortCutCnt1].Image = (Image)blue1;
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
                                 clear(4);
                             }
-                            if (pb3[lastShortCutCnt1].Image == (Image)red_with)
-                            {
-                                pb3[lastShortCutCnt1].Image = (Image)blue1;
+                            if (pb3[lastShortCutCnt1].Image == (Image)red_with) {
+                                if(blue) pb3[lastShortCutCheck1].Image = (Image)blue_with;
+                                else pb3[lastShortCutCnt1].Image = (Image)blue1;
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
                                 clear(3);
                                 clear(4);
                             }
                         }
-                        pb3[lastShortCutCnt1].Image = (Image)blue1;
+                        if(blue) pb3[lastShortCutCheck1].Image = (Image)blue_with;
+                        else pb3[lastShortCutCnt1].Image = (Image)blue1;
                     }
                 }
 
@@ -475,62 +436,45 @@ namespace yutgame
                 {
                     label1.Text = "●";
                     label1.ForeColor = System.Drawing.Color.Blue;                   
-                    btnBlue1.Visible = false;
-
+                    btnBlue1.Visible = false; 
                 }
                 if (centerShortCutCnt1 > 3) // 중앙 지름길으로 도착햇을때
                 {
                     label1.Text = "●";
                     label1.ForeColor = System.Drawing.Color.Blue;                   
-                    btnBlue1.Visible = false;
-
+                    btnBlue1.Visible = false; 
                 }
                 if (lastShortCutCnt1 > 6) //지름길 2로 도착햇을때
                 {
                     label1.Text = "●";
                     label1.ForeColor = System.Drawing.Color.Blue;                  
-                    btnBlue1.Visible = false;
-
+                    btnBlue1.Visible = false; 
                 }
-            }
-
+            } 
 
             // 지름길 선택 여부
             // 1번째지름길에 도착했을경우
-            if (outlineCnt1 == 5) 
-            {
+            if (outlineCnt1 == 5) {
                 if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) //지름길로 갈것인지 메세지를 띄움
                 {
                     firstShortCutCheck1 = 1;
                 }
-                else
-                {
-                    firstShortCutCheck1 = 0;
-                }
+                else firstShortCutCheck1 = 0;
+                
             }
             // 중앙 지름길에 도착했을경우
-            if (firstShortCutCnt1 == 3) 
-            {
-                if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    centerShortCutCheck1 = 1;
-                }
-                else
-                {
-                    centerShortCutCheck1 = 0;
-                }
+            if (firstShortCutCnt1 == 3) {
+                if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) 
+                    centerShortCutCheck1 = 1; 
+                else 
+                    centerShortCutCheck1 = 0; 
             }
             // 2번째 지름길에 도착했을경우
-            if (outlineCnt1 == 10) 
-            {
-                if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
+            if (outlineCnt1 == 10) {
+                if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) 
                     lastShortCutCheck1 = 1;
-                }
-                else
-                {
-                    lastShortCutCheck1 = 0;
-                }
+                else 
+                    lastShortCutCheck1 = 0; 
             }
             finish(); 
         }
@@ -548,13 +492,11 @@ namespace yutgame
             if (outlineCnt2 < 22) 
             {
                 pb1[outlineCnt2].Image = null;
-                if (firstShortCutCheck2 == 0) 
-                {
-                    if (lastShortCutCheck2 == 0)
-                    {
-                        if (outlineCnt2 < 22)
-                        {
-                            outlineCnt2 += num; 
+                if (firstShortCutCheck2 == 0) {
+                    if (lastShortCutCheck2 == 0) {
+                        if (outlineCnt2 < 22) {
+                            outlineCnt2 += num;
+                            if (outlineCnt2 == 0) outlineCnt2 = 20;
 
                             //백도 처리
                             if (outlineCnt2 == -1) {
@@ -562,50 +504,37 @@ namespace yutgame
                                 outlineCnt2 = 20;
                             }
                            
-                            if (ccnt == 1)
-                            {
-                                pb1[count2].Image = (Image)blue2;
-                                ccnt = 0;
-                            }
+                            if (blue) pb1[count2].Image = (Image)blue2;
+                            
                            
-                            if (pb1[outlineCnt2].Image == (Image)blue1)
-                            {
+                            if (pb1[outlineCnt2].Image == (Image)blue1) {
                                 count2 = outlineCnt2;
-                                ccnt = 1; 
                                 pb1[count2].Image = (Image)blue_with;
                             }
                             //1P의 돌이 2P의 돌을 만낫을때
-                            if (outlineCnt2 < 21)
-                            {
-                                if (pb1[outlineCnt2].Image == (Image)red1)
-                                {
-                                    pb1[outlineCnt2].Image = (Image)blue2;
+                            if (outlineCnt2 < 21) {
+                                if (pb1[outlineCnt2].Image == (Image)red1) {
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
-                                    clear(3);
-
+                                    clear(3); 
                                 }
-                                if (pb1[outlineCnt2].Image == (Image)red2) // 1P의 돌이 2P의 두번째돌을 만났을때
-                                {
-                                    pb1[outlineCnt2].Image = (Image)blue2;
+                                // 1P의 돌이 2P의 두번째돌을 만났을때
+                                if (pb1[outlineCnt2].Image == (Image)red2) {
                                     clear(4);
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
                                 }
-                                if (pb1[outlineCnt2].Image == (Image)red_with)
-                                {
-                                    pb1[outlineCnt2].Image = (Image)blue2;
+                                if (pb1[outlineCnt2].Image == (Image)red_with) {
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
                                     clear(4);
-                                    clear(3);
-
+                                    clear(3); 
                                 }
                             }
-                            pb1[outlineCnt2].Image = (Image)blue2;
+                            if (blue) pb1[outlineCnt2].Image = (Image)blue_with;
+                            else pb1[outlineCnt2].Image = (Image)blue2;
                         }
                     }
                 }
                 //지름길에서 yes를 한경우
-                if (firstShortCutCheck2 == 1)
-                {
+                if (firstShortCutCheck2 == 1) {
                     pb2[firstShortCutCnt2].Image = null;
                     if (outlineCnt2 == 5) 
                     {
@@ -616,208 +545,143 @@ namespace yutgame
                         if (centerShortCutCheck2 != 1) 
                         {
                             firstShortCutCnt2 += num;
-                            if (ccnt1 == 1)
-                            {
-                                pb2[count2].Image = (Image)blue2;
-                                ccnt1 = 0;
-                            }
-                            if (pb2[outlineCnt2].Image == (Image)blue2)
-                            {
+                            if (blue) pb2[count2].Image = (Image)blue2;
+
+                            if (pb2[outlineCnt2].Image == (Image)blue2) {
                                 count2 = firstShortCutCnt2;
-                                ccnt1 = 1;
                             }
-                            if (firstShortCutCnt2 < 12)
-                            {
-                                if (pb2[firstShortCutCnt2].Image == (Image)red1)
-                                {
-                                    pb2[firstShortCutCnt2].Image = (Image)blue2;
+
+                            if (firstShortCutCnt2 < 12) {
+                                if (pb2[firstShortCutCnt2].Image == (Image)red1) {
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
                                     clear(3);
                                 }
-                                if (pb2[firstShortCutCnt2].Image == (Image)red2)
-                                {
-                                    pb2[firstShortCutCnt2].Image = (Image)blue2;
+                                if (pb2[firstShortCutCnt2].Image == (Image)red2) {
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
                                     clear(4);
                                 }
-                                if (pb2[firstShortCutCnt2].Image == (Image)red_with)
-                                {
-                                    pb2[firstShortCutCnt2].Image = (Image)blue2;
+                                if (pb2[firstShortCutCnt2].Image == (Image)red_with) {
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
                                     clear(3);
                                     clear(4);
                                 }
                             }
-                            pb2[firstShortCutCnt2].Image = (Image)blue2;
+                            if (blue) pb2[firstShortCutCnt2].Image = (Image)blue_with;
+                            else pb2[firstShortCutCnt2].Image = (Image)blue2;
                         }
                     }
                 }
 
                 // 중앙 지름길에서 Yes를 한경우
-                if (centerShortCutCheck2 == 1)
-                {
-
+                if (centerShortCutCheck2 == 1) { 
                     pb3[3 + centerShortCutCnt2].Image = null;
-                    if (firstShortCutCnt2 == 3) 
-                    {
+                    if (firstShortCutCnt2 == 3) {
                         firstShortCutCnt2++;
                     }
-                    if (centerShortCutCnt2 < 5)
-                    {
+                    if (centerShortCutCnt2 < 5) {
 
                         centerShortCutCnt2 += num;
-                        if (ccnt1 == 1)
-                        {
+                        if (blue) {
                             pb3[count1].Image = (Image)blue1;
-                            ccnt1 = 0;
                         }
-                        if (pb3[count1].Image == (Image)blue1) 
-                        {                                                             
-                            ccnt1 = 1;
-                        }
-                        if (centerShortCutCnt2 < 4)
-                        {
-                            if (pb3[3 + centerShortCutCnt2].Image == (Image)red1)
-                            {
+                        if (pb3[count1].Image == (Image)blue1) blue = true;
+
+                        if (centerShortCutCnt2 < 4) {
+                            if (pb3[3 + centerShortCutCnt2].Image == (Image)red1) {
                                 pb3[count1].Image = (Image)blue2;
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
                                 clear(3);
                             }
-                            if (pb3[3 + centerShortCutCnt2].Image == (Image)red2)
-                            {
+                            if (pb3[3 + centerShortCutCnt2].Image == (Image)red2) {
                                 pb3[count1].Image = (Image)blue2;
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
                                 clear(4);
                             }
-                            if (pb3[3 + centerShortCutCnt2].Image == (Image)red_with)
-                            {
+                            if (pb3[3 + centerShortCutCnt2].Image == (Image)red_with) {
                                 pb3[count1].Image = (Image)blue2;
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
                                 clear(3);
                                 clear(4);
                             }
                         }
-                        pb3[3 + centerShortCutCnt2].Image = (Image)blue2;
-
-
+                        if (blue) pb3[3 + centerShortCutCnt2].Image = (Image)blue_with;
+                        else pb3[3 + centerShortCutCnt2].Image = (Image)blue2; 
                     }
                 }
 
                 // 2번째 지름길에서 Yes를 한경우
-                if (lastShortCutCheck2 == 1)
-                {
-
+                if (lastShortCutCheck2 == 1) { 
                     pb3[lastShortCutCnt2].Image = null;
-                    if (outlineCnt2 == 10) 
-                    {
+                    if (outlineCnt2 == 10) {
                         outlineCnt2++;
                     }
-                    if (lastShortCutCnt2 < 8)
-                    {
+                    if (lastShortCutCnt2 < 8) {
                         lastShortCutCnt2 = lastShortCutCnt2 + num;
 
-                        if (ccnt1 == 1)
-                        {
+                        if (blue) {
                             pb3[count2].Image = (Image)blue2;
-                            ccnt1 = 0;
                         }
-                        if (pb3[lastShortCutCnt2].Image == (Image)blue2)
-                        {
+                        if (pb3[lastShortCutCnt2].Image == (Image)blue2) {
                             count2 = lastShortCutCnt2;
-                            ccnt1 = 1;
+                            blue = true;
                         }
-                        if (lastShortCutCnt2 < 7)
-                        {
-                            if (pb3[lastShortCutCnt2].Image == (Image)red1)
-                            {
-                                pb3[lastShortCutCnt2].Image = (Image)blue2;
+                        if (lastShortCutCnt2 < 7) {
+                            if (pb3[lastShortCutCnt2].Image == (Image)red1) {
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
                                 clear(3);
                             }
-                            if (pb3[lastShortCutCnt2].Image == (Image)red2)
-                            {
-                                pb3[lastShortCutCnt2].Image = (Image)blue2;
+                            if (pb3[lastShortCutCnt2].Image == (Image)red2) {
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
                                 clear(4);
                             }
-                            if (pb3[lastShortCutCnt2].Image == (Image)red_with)
-                            {
-                                pb3[lastShortCutCnt2].Image = (Image)blue2;
+                            if (pb3[lastShortCutCnt2].Image == (Image)red_with) {
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
                                 clear(3);
                                 clear(4);
                             }
                         }
-                        pb3[lastShortCutCnt2].Image = (Image)blue2;
+                        if(blue) pb3[lastShortCutCnt2].Image = (Image)blue_with;
+                        else pb3[lastShortCutCnt2].Image = (Image)blue2;
                     }
                 }
 
 
                 //돌 도착 했을 때
-                if (outlineCnt2 > 20) 
-                {
+                if (outlineCnt2 > 20) {
                     label2.Text = "●"; 
                     label2.ForeColor = System.Drawing.Color.Blue;
                     btnBlue2.Visible = false; 
                 }
-                if (firstShortCutCnt2 > 11) 
-                {
+                if (firstShortCutCnt2 > 11) {
                     label2.Text = "●";
                     label2.ForeColor = System.Drawing.Color.Blue;
-                    btnBlue2.Visible = false;
-
+                    btnBlue2.Visible = false; 
                 }
-                if (centerShortCutCnt2 > 3) 
-                {
+                if (centerShortCutCnt2 > 3) {
                     label2.Text = "●";
                     label2.ForeColor = System.Drawing.Color.Blue;
-                    btnBlue2.Visible = false;
-
+                    btnBlue2.Visible = false; 
                 }
-                if (lastShortCutCnt2 > 6) 
-                {
+                if (lastShortCutCnt2 > 6) {
                     label2.Text = "●";
                     label2.ForeColor = System.Drawing.Color.Blue;
-                    btnBlue2.Visible = false;
-
+                    btnBlue2.Visible = false; 
                 }
-            }
-
-
+            } 
 
             //지름길 선택 여부
-            if (outlineCnt2 == 5)
-            {
+            if (outlineCnt2 == 5) {
                 if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) //지름길로 갈것인지 메세지를 띄움
-                {
                     firstShortCutCheck2 = 1;
-                }
-                else
-                {
-                    firstShortCutCheck2 = 0;
-                }
+                else firstShortCutCheck2 = 0;
             }
-            if (firstShortCutCnt2 == 3) 
-            {
-                if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    centerShortCutCheck2 = 1;
-                }
-                else
-                {
-                    centerShortCutCheck2 = 0;
-                }
+            if (firstShortCutCnt2 == 3) {
+                if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) centerShortCutCheck2 = 1;
+                else centerShortCutCheck2 = 0;
             }
-            if (outlineCnt2 == 10)
-            {
-                if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    lastShortCutCheck2 = 1;
-                }
-                else
-                {
-                    lastShortCutCheck2 = 0;
-                }
+            if (outlineCnt2 == 10) {
+                if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) lastShortCutCheck2 = 1;
+                else lastShortCutCheck2 = 0;
             }
             finish();
         }
@@ -833,224 +697,170 @@ namespace yutgame
 
 
             //외각라인 
-            if (outlineCnt3 < 22)
-            {
-                pb1[outlineCnt3].Image = null;
-
+            if (outlineCnt3 < 22) {
+                pb1[outlineCnt3].Image = null; 
                 // 첫 지름길에서 NO를 선택한경우
-                if (firstShortCutCheck3 == 0)
-                {
+                if (firstShortCutCheck3 == 0) {
                     //마지막 지름길에서 NO를 선택한경우
-                    if (lastShortCutCheck3 == 0)
-                    {
-                        if (outlineCnt3 < 22)
-                        {
+                    if (lastShortCutCheck3 == 0) {
+                        if (outlineCnt3 < 22) {
                             //아웃라인 전진
                             outlineCnt3 += num;
+                            if (outlineCnt3 == 0) outlineCnt3 = 20; 
 
                             //백도 처리
-                            if(outlineCnt3 == -1)
-                            {
+                            if(outlineCnt3 == -1) {
                                 horsePos1.Image = red1;
                                 outlineCnt3 = 20; 
                             }
 
                             // ccnt가 1일때 즉 1P의말이 겹쳣을때를 말하는 코드이다.
-                            if (ccnt == 1)
-                            {
+                            if (red) {
                                 pb1[count3].Image = (Image)red_with;
-                                ccnt = 0;
                             }
 
                             // 2P의 두개의돌이 만났을때
-                            if (pb1[outlineCnt3].Image == (Image)red2)
-                            {
+                            if (pb1[outlineCnt3].Image == (Image)red2) {
                                 count3 = outlineCnt3; //count3에 outlineCnt1값을 넣어준다
-                                ccnt = 1; // ccnt는 1로 변경해준다.
+                                red = true;
                                 pb1[count3].Image = (Image)red_with;
                             }
 
                             //2P의 돌이 1P의 돌을 만낫을때
-                            if (outlineCnt3 < 21)
-                            {
+                            if (outlineCnt3 < 21) {
                                 //2P의 돌이 1P 첫번째돌을 만낫을때
-                                if (pb1[outlineCnt3].Image == (Image)blue1)
-                                {
-                                    pb1[outlineCnt3].Image = (Image)red1;
+                                if (pb1[outlineCnt3].Image == (Image)blue1) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
                                     clear(1);
                                 }
                                 // 2P의 돌이 1P의 두번째돌을 만났을때
-                                if (pb1[outlineCnt3].Image == (Image)blue2)
-                                {
-                                    pb1[outlineCnt3].Image = (Image)red1;
+                                if (pb1[outlineCnt3].Image == (Image)blue2) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
                                     clear(2);
                                 }
-                                if (pb1[outlineCnt3].Image == (Image)blue_with)
-                                {
-                                    pb1[outlineCnt3].Image = (Image)red1;
+                                if (pb1[outlineCnt3].Image == (Image)blue_with) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
                                     clear(1);
                                     clear(2);
                                 }
                             }
-                            pb1[outlineCnt3].Image = (Image)red1;
+                            if(red) pb1[outlineCnt3].Image = (Image)red_with;
+                            else pb1[outlineCnt3].Image = (Image)red1;
                         }
                     }
                 }
                 //첫 지름길에서 yes를 한경우
-                if (firstShortCutCheck3 == 1)
-                {
+                if (firstShortCutCheck3 == 1) {
                     pb2[firstShortCutCnt3].Image = null;
-                    if (outlineCnt3 == 5)
-                    {
+                    if (outlineCnt3 == 5) {
                         outlineCnt3++;
                     }
-                    if (firstShortCutCnt3 < 13)
-                    {
+                    if (firstShortCutCnt3 < 13) {
                         // 중앙 지름길로 가지않앗을때
                         if (centerShortCutCheck3 != 1)
                         {
                             firstShortCutCnt3 += num;
-                            if (ccnt1 == 1)
-                            {
+                            if (red) {
                                 pb2[count3].Image = (Image)red_with;
-                                ccnt1 = 0;
                             }
-                            if (pb2[outlineCnt3].Image == (Image)red1)
-                            {
+                            if (pb2[outlineCnt3].Image == (Image)red1) {
                                 count3 = firstShortCutCnt3;
-                                ccnt1 = 1;
+                                red = true;
                             }
-                            if (firstShortCutCnt3 < 12)
-                            {
-                                if (pb2[firstShortCutCnt3].Image == (Image)blue1)
-                                {
-                                    pb2[firstShortCutCnt3].Image = (Image)red1;
+                            if (firstShortCutCnt3 < 12) {
+                                if (pb2[firstShortCutCnt3].Image == (Image)blue1) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
                                     clear(1);
                                 }
-                                if (pb2[firstShortCutCnt3].Image == (Image)blue2)
-                                {
-                                    pb2[firstShortCutCnt3].Image = (Image)red1;
+                                if (pb2[firstShortCutCnt3].Image == (Image)blue2) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
                                     clear(2);
                                 }
-                                if (pb2[firstShortCutCnt3].Image == (Image)blue_with)
-                                {
-                                    pb2[firstShortCutCnt3].Image = (Image)red1;
+                                if (pb2[firstShortCutCnt3].Image == (Image)blue_with) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
                                     clear(1);
                                     clear(2);
                                 }
                             }
-                            pb2[firstShortCutCnt3].Image = (Image)red1;
+                            if(red) pb2[firstShortCutCnt3].Image = (Image)red_with;
+                            else pb2[firstShortCutCnt3].Image = (Image)red1;
                         }
                     }
                 }
 
                 // 중앙 지름길에서 Yes를 한경우
-                if (centerShortCutCheck3 == 1)
-                {
-
+                if (centerShortCutCheck3 == 1) { 
                     pb3[3 + centerShortCutCnt3].Image = null;
-                    if (firstShortCutCnt3 == 3)
-                    {
+                    if (firstShortCutCnt3 == 3) {
                         firstShortCutCnt3++;
                     }
-                    if (centerShortCutCnt3 < 5)
-                    {
-
+                    if (centerShortCutCnt3 < 5) { 
                         centerShortCutCnt3 += num;
-                        if (ccnt1 == 1)
-                        {
+                        if (red) {
                             pb3[count3].Image = (Image)red_with;
-                            ccnt1 = 0;
                         }
-                        if (pb3[count3].Image == (Image)red1)
-                        {
+                        if (pb3[count3].Image == (Image)red1) {
                             count3 = 3 + centerShortCutCnt3;
-                            ccnt1 = 1;
+                            red = true;
                         }
 
-                        if (centerShortCutCnt3 < 4)
-                        {
-                            if (pb3[3 + centerShortCutCnt3].Image == (Image)blue1)
-                            {
+                        if (centerShortCutCnt3 < 4) {
+                            if (pb3[3 + centerShortCutCnt3].Image == (Image)blue1) {
                                 pb3[count3].Image = (Image)red1;
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
                                 clear(1);
                             }
-                            if (pb3[3 + centerShortCutCnt3].Image == (Image)blue2)
-                            {
+                            if (pb3[3 + centerShortCutCnt3].Image == (Image)blue2) {
                                 pb3[count3].Image = (Image)red1;
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
                                 clear(2);
                             }
-                            if (pb3[3 + centerShortCutCnt3].Image == (Image)blue_with)
-                            {
+                            if (pb3[3 + centerShortCutCnt3].Image == (Image)blue_with) {
                                 pb3[count3].Image = (Image)red1;
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
                                 clear(1);
                                 clear(2);
                             }
                         }
-                        pb3[3 + centerShortCutCnt3].Image = (Image)red1;
-
-
+                        if (red) pb3[3 + centerShortCutCnt3].Image = (Image)red_with; 
+                        else pb3[3 + centerShortCutCnt3].Image = (Image)red1; 
                     }
                 }
 
                 // 2번째 지름길에서 Yes를 한경우
-                if (lastShortCutCheck3 == 1)
-                {
-
+                if (lastShortCutCheck3 == 1) { 
                     pb3[lastShortCutCnt3].Image = null;
-                    if (outlineCnt3 == 10)
-                    {
+                    if (outlineCnt3 == 10) {
                         outlineCnt3++;
                     }
-                    if (lastShortCutCnt3 < 8)
-                    {
-                        lastShortCutCnt3 = lastShortCutCnt3 + num;
-
-                        if (ccnt1 == 1)
-                        {
+                    if (lastShortCutCnt3 < 8) {
+                        lastShortCutCnt3 = lastShortCutCnt3 + num; 
+                        if (red) {
                             pb3[count3].Image = (Image)red_with;
-                            ccnt1 = 0;
                         }
-                        if (pb3[lastShortCutCnt3].Image == (Image)red2)
-                        {
+                        if (pb3[lastShortCutCnt3].Image == (Image)red2) {
                             count3 = lastShortCutCnt3;
-                            ccnt1 = 1;
+                            red = true;
                         }
-                        if (lastShortCutCnt3 < 7)
-                        {
-                            if (pb3[lastShortCutCnt3].Image == (Image)blue1)
-                            {
-                                pb3[lastShortCutCnt3].Image = (Image)red1;
+                        if (lastShortCutCnt3 < 7) {
+                            if (pb3[lastShortCutCnt3].Image == (Image)blue1) {
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
                                 clear(1);
                             }
-                            if (pb3[lastShortCutCnt3].Image == (Image)blue2)
-                            {
-                                pb3[lastShortCutCnt3].Image = (Image)red1;
+                            if (pb3[lastShortCutCnt3].Image == (Image)blue2) {
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
                                 clear(2);
                             }
-                            if (pb3[lastShortCutCnt3].Image == (Image)blue_with)
-                            {
-                                pb3[lastShortCutCnt3].Image = (Image)red1;
+                            if (pb3[lastShortCutCnt3].Image == (Image)blue_with) {
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
                                 clear(1);
                                 clear(2);
                             }
                         }
-                        pb3[lastShortCutCnt3].Image = (Image)red1;
+                        if(red) pb3[lastShortCutCnt3].Image = (Image)red_with;
+                        else pb3[lastShortCutCnt3].Image = (Image)red1;
                     }
-                }
-
+                } 
 
                 //돌 도착 했을 때
                 if (outlineCnt3 > 20) // 첫번째 돌이 도착했을때 
@@ -1063,62 +873,39 @@ namespace yutgame
                 {
                     label3.Text = "●";
                     label3.ForeColor = System.Drawing.Color.Red;
-                    btnRed1.Visible = false;
-
+                    btnRed1.Visible = false; 
                 }
                 if (centerShortCutCnt3 > 3) // 중앙 지름길으로 도착햇을때
                 {
                     label3.Text = "●";
                     label3.ForeColor = System.Drawing.Color.Red;
-                    btnRed1.Visible = false;
-
+                    btnRed1.Visible = false; 
                 }
                 if (lastShortCutCnt3 > 6) //지름길 2로 도착햇을때
                 {
                     label3.Text = "●";
                     label3.ForeColor = System.Drawing.Color.Red;
-                    btnRed1.Visible = false;
-
+                    btnRed1.Visible = false; 
                 }
             }
 
 
             // 지름길 선택 여부
             // 1번째지름길에 도착했을경우
-            if (outlineCnt3 == 5)
-            {
+            if (outlineCnt3 == 5) {
                 if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) //지름길로 갈것인지 메세지를 띄움
-                {
                     firstShortCutCheck3 = 1;
-                }
-                else
-                {
-                    firstShortCutCheck3 = 0;
-                }
+                else firstShortCutCheck3 = 0;
             }
             // 중앙 지름길에 도착했을경우
-            if (firstShortCutCnt3 == 3)
-            {
-                if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    centerShortCutCheck3 = 1;
-                }
-                else
-                {
-                    centerShortCutCheck3 = 0;
-                }
+            if (firstShortCutCnt3 == 3) {
+                if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) centerShortCutCheck3 = 1;
+                else centerShortCutCheck3 = 0;
             }
             // 2번째 지름길에 도착했을경우
-            if (outlineCnt3 == 10)
-            {
-                if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    lastShortCutCheck3 = 1;
-                }
-                else
-                {
-                    lastShortCutCheck3 = 0;
-                }
+            if (outlineCnt3 == 10) {
+                if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) lastShortCutCheck3 = 1;
+                else lastShortCutCheck3 = 0;
             }
             finish();
         }
@@ -1134,20 +921,17 @@ namespace yutgame
 
 
             //외각라인 
-            if (outlineCnt4 < 22)
-            {
+            if (outlineCnt4 < 22) {
                 pb1[outlineCnt4].Image = null;
 
                 // 첫 지름길에서 NO를 선택한경우
-                if (firstShortCutCheck4 == 0)
-                {
+                if (firstShortCutCheck4 == 0) {
                     //마지막 지름길에서 NO를 선택한경우
-                    if (lastShortCutCheck4 == 0)
-                    {
-                        if (outlineCnt4 < 22)
-                        {
+                    if (lastShortCutCheck4 == 0) {
+                        if (outlineCnt4 < 22) {
                             //아웃라인 전진
                             outlineCnt4 += num;
+                            if (outlineCnt4 == 0) outlineCnt4 = 20;
 
                             //백도 처리
                             if(outlineCnt4 == -1) {
@@ -1156,198 +940,145 @@ namespace yutgame
                             }
 
                             // ccnt가 1일때 즉 1P의말이 겹쳣을때를 말하는 코드이다.
-                            if (ccnt == 1)
-                            {
+                            if (red) {
                                 pb1[count4].Image = (Image)red_with;
-                                ccnt = 0;
                             }
 
                             // 2P의 두개의돌이 만났을때
-                            if (pb1[outlineCnt4].Image == (Image)red1)
-                            {
+                            if (pb1[outlineCnt4].Image == (Image)red1) {
                                 count4 = outlineCnt4; //count4에 outlineCnt1값을 넣어준다
-                                ccnt = 1; // ccnt는 1로 변경해준다.
                                 pb1[count4].Image = (Image)red_with;
                             }
 
                             //2P의 돌이 1P의 돌을 만낫을때
-                            if (outlineCnt4 < 21)
-                            {
+                            if (outlineCnt4 < 21) {
                                 //2P의 돌이 1P 첫번째돌을 만낫을때
-                                if (pb1[outlineCnt4].Image == (Image)blue1)
-                                {
-                                    pb1[outlineCnt4].Image = (Image)red2;
+                                if (pb1[outlineCnt4].Image == (Image)blue1) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
                                     clear(1);
                                 }
                                 // 2P의 돌이 1P의 두번째돌을 만났을때
-                                if (pb1[outlineCnt4].Image == (Image)blue2)
-                                {
-                                    pb1[outlineCnt4].Image = (Image)red2;
+                                if (pb1[outlineCnt4].Image == (Image)blue2) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
                                     clear(2);
                                 }
-                                if (pb1[outlineCnt4].Image == (Image)blue_with)
-                                {
-                                    pb1[outlineCnt4].Image = (Image)red2;
+                                if (pb1[outlineCnt4].Image == (Image)blue_with) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
                                     clear(1);
                                     clear(2);
                                 }
                             }
-                            pb1[outlineCnt4].Image = (Image)red2;
+                            if(red) pb1[outlineCnt4].Image = (Image)red_with;
+                            else pb1[outlineCnt4].Image = (Image)red2;
                         }
                     }
                 }
                 //첫 지름길에서 yes를 한경우
-                if (firstShortCutCheck4 == 1)
-                {
+                if (firstShortCutCheck4 == 1) {
                     pb2[firstShortCutCnt4].Image = null;
-                    if (outlineCnt4 == 5)
-                    {
+                    if (outlineCnt4 == 5) {
                         outlineCnt4++;
                     }
-                    if (firstShortCutCnt4 < 13)
-                    {
+                    if (firstShortCutCnt4 < 13) {
                         // 중앙 지름길로 가지않앗을때
-                        if (centerShortCutCheck4 != 1)
-                        {
+                        if (centerShortCutCheck4 != 1) {
                             firstShortCutCnt4 += num;
-                            if (ccnt1 == 1)
-                            {
+                            if (red) {
                                 pb2[count4].Image = (Image)red_with;
-                                ccnt1 = 0;
                             }
-                            if (pb2[outlineCnt4].Image == (Image)red1)
-                            {
+                            if (pb2[outlineCnt4].Image == (Image)red1) {
                                 count4 = firstShortCutCnt4;
-                                ccnt1 = 1;
+                                red = true;
                             }
-                            if (firstShortCutCnt4 < 12)
-                            {
-                                if (pb2[firstShortCutCnt4].Image == (Image)blue1)
-                                {
-                                    pb2[firstShortCutCnt4].Image = (Image)red2;
+                            if (firstShortCutCnt4 < 12) {
+                                if (pb2[firstShortCutCnt4].Image == (Image)blue1) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
                                     clear(1);
                                 }
-                                if (pb2[firstShortCutCnt4].Image == (Image)blue2)
-                                {
-                                    pb2[firstShortCutCnt4].Image = (Image)red2;
+                                if (pb2[firstShortCutCnt4].Image == (Image)blue2) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
                                     clear(2);
                                 }
-                                if (pb2[firstShortCutCnt4].Image == (Image)blue_with)
-                                {
-                                    pb2[firstShortCutCnt4].Image = (Image)red2;
+                                if (pb2[firstShortCutCnt4].Image == (Image)blue_with) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
                                     clear(1);
                                     clear(2);
                                 }
-                            }
-                            pb2[firstShortCutCnt4].Image = (Image)red2;
+                            } 
+                            if(red) pb2[firstShortCutCnt4].Image = (Image)red_with;
+                            else pb2[firstShortCutCnt4].Image = (Image)red2;
                         }
                     }
                 }
 
                 // 중앙 지름길에서 Yes를 한경우
-                if (centerShortCutCheck4 == 1)
-                {
-
+                if (centerShortCutCheck4 == 1) { 
                     pb3[3 + centerShortCutCnt4].Image = null;
-                    if (firstShortCutCnt4 == 3)
-                    {
+                    if (firstShortCutCnt4 == 3) {
                         firstShortCutCnt4++;
                     }
-                    if (centerShortCutCnt4 < 5)
-                    {
-
+                    if (centerShortCutCnt4 < 5) { 
                         centerShortCutCnt4 += num;
-                        if (ccnt1 == 1)
-                        {
+                        if (red) {
                             pb3[count4].Image = (Image)red_with;
-                            ccnt1 = 0;
                         }
-                        if (pb3[count4].Image == (Image)red1)
-                        {
+                        if (pb3[count4].Image == (Image)red1) {
                             count4 = 3 + centerShortCutCnt4;
-                            ccnt1 = 1;
+                            ResizeRedraw = true;
                         }
 
-                        if (centerShortCutCnt4 < 4)
-                        {
-                            if (pb3[3 + centerShortCutCnt4].Image == (Image)blue1)
-                            {
-                                pb3[count4].Image = (Image)red2;
+                        if (centerShortCutCnt4 < 4) {
+                            if (pb3[3 + centerShortCutCnt4].Image == (Image)blue1) {
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
                                 clear(1);
                             }
-                            if (pb3[3 + centerShortCutCnt4].Image == (Image)blue2)
-                            {
-                                pb3[count4].Image = (Image)red2;
+                            if (pb3[3 + centerShortCutCnt4].Image == (Image)blue2) {
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
                                 clear(2);
                             }
-                            if (pb3[3 + centerShortCutCnt4].Image == (Image)blue_with)
-                            {
-                                pb3[count4].Image = (Image)red2;
+                            if (pb3[3 + centerShortCutCnt4].Image == (Image)blue_with) {
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
                                 clear(1);
                                 clear(2);
                             }
                         }
-                        pb3[3 + centerShortCutCnt4].Image = (Image)red2;
-
-
+                        if(red ) pb3[3 + centerShortCutCnt4].Image = (Image)red_with;
+                        else pb3[3 + centerShortCutCnt4].Image = (Image)red2; 
                     }
                 }
 
                 // 2번째 지름길에서 Yes를 한경우
-                if (lastShortCutCheck4 == 1)
-                {
-
+                if (lastShortCutCheck4 == 1) { 
                     pb3[lastShortCutCnt4].Image = null;
-                    if (outlineCnt4 == 10)
-                    {
+                    if (outlineCnt4 == 10) {
                         outlineCnt4++;
                     }
-                    if (lastShortCutCnt4 < 8)
-                    {
-                        lastShortCutCnt4 = lastShortCutCnt4 + num;
-
-                        if (ccnt1 == 1)
-                        {
+                    if (lastShortCutCnt4 < 8) {
+                        lastShortCutCnt4 = lastShortCutCnt4 + num; 
+                        if (red) {
                             pb3[count4].Image = (Image)red_with;
-                            ccnt1 = 0;
                         }
-                        if (pb3[lastShortCutCnt4].Image == (Image)red1)
-                        {
+                        if (pb3[lastShortCutCnt4].Image == (Image)red1) {
                             count4 = lastShortCutCnt4;
-                            ccnt1 = 1;
+                            red = true;
                         }
-                        if (lastShortCutCnt4 < 7)
-                        {
-                            if (pb3[lastShortCutCnt4].Image == (Image)blue1)
-                            {
-                                pb3[lastShortCutCnt4].Image = (Image)red2;
+                        if (lastShortCutCnt4 < 7) {
+                            if (pb3[lastShortCutCnt4].Image == (Image)blue1) {
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
                                 clear(1);
                             }
-                            if (pb3[lastShortCutCnt3].Image == (Image)blue2)
-                            {
-                                pb3[lastShortCutCnt3].Image = (Image)red2;
+                            if (pb3[lastShortCutCnt3].Image == (Image)blue2) {
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
                                 clear(2);
                             }
-                            if (pb3[lastShortCutCnt3].Image == (Image)blue_with)
-                            {
-                                pb3[lastShortCutCnt3].Image = (Image)red2;
+                            if (pb3[lastShortCutCnt3].Image == (Image)blue_with) {
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
                                 clear(1);
                                 clear(2);
                             }
                         }
-                        pb3[lastShortCutCnt3].Image = (Image)red2;
+                        if(red) pb3[lastShortCutCnt3].Image = (Image)red_with;
+                        else pb3[lastShortCutCnt3].Image = (Image)red2;
                     }
                 }
 
@@ -1363,62 +1094,39 @@ namespace yutgame
                 {
                     label4.Text = "●";
                     label4.ForeColor = System.Drawing.Color.Red;
-                    btnRed2.Visible = false;
-
+                    btnRed2.Visible = false; 
                 }
                 if (centerShortCutCnt4 > 3) // 중앙 지름길으로 도착햇을때
                 {
                     label4.Text = "●";
                     label4.ForeColor = System.Drawing.Color.Red;
-                    btnRed2.Visible = false;
-
+                    btnRed2.Visible = false; 
                 }
                 if (lastShortCutCnt4 > 6) //지름길 2로 도착햇을때
                 {
                     label4.Text = "●";
                     label4.ForeColor = System.Drawing.Color.Red;
-                    btnRed2.Visible = false;
-
+                    btnRed2.Visible = false; 
                 }
             }
 
 
             // 지름길 선택 여부
             // 1번째지름길에 도착했을경우
-            if (outlineCnt4 == 5)
-            {
+            if (outlineCnt4 == 5) {
                 if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) //지름길로 갈것인지 메세지를 띄움
-                {
                     firstShortCutCheck4 = 1;
-                }
-                else
-                {
-                    firstShortCutCheck4 = 0;
-                }
+                else firstShortCutCheck4 = 0;
             }
             // 중앙 지름길에 도착했을경우
-            if (firstShortCutCnt4 == 3)
-            {
-                if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    centerShortCutCheck4 = 1;
-                }
-                else
-                {
-                    centerShortCutCheck4 = 0;
-                }
+            if (firstShortCutCnt4 == 3) {
+                if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) centerShortCutCheck4 = 1;
+                else centerShortCutCheck4 = 0;
             }
             // 2번째 지름길에 도착했을경우
-            if (outlineCnt4 == 10)
-            {
-                if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    lastShortCutCheck4 = 1;
-                }
-                else
-                {
-                    lastShortCutCheck4 = 0;
-                }
+            if (outlineCnt4 == 10) {
+                if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) lastShortCutCheck4 = 1;
+                else lastShortCutCheck4 = 0;
             }
             finish();
         }
