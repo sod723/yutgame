@@ -31,11 +31,19 @@ namespace yutgame
         public bool m_bConnect = false;
         TcpClient m_Client;
 
-        int num;
+        static int num;
         int yutnum;
-
+        static string oppyut;
         bool blue = false;
         bool red = false;
+        static int[] yutinfo=new int[2];
+        static int yutswitch=-1;
+        static int bluehorse1=-1;
+        static int bluehorse2=-1;
+        static int redhorse1=-1;
+        static int redhorse2=-1;
+        static int opphorse2;
+        static int oppyut2;
 
         int outlineCnt1 = 0;
         int outlineCnt2 = 0;
@@ -212,6 +220,7 @@ namespace yutgame
         {
             Random rand = new Random();
             yutnum = rand.Next(16);
+
             if (yutnum == 1) // 빽도
             {
                 MessageBox.Show("빽도!!");
@@ -242,6 +251,11 @@ namespace yutgame
                 MessageBox.Show("모!! 한번 더!!!");
                 num = 5;
             }
+        bluehorse1=-1;
+        bluehorse2=-1;
+        redhorse1=-1;
+        redhorse2=-1;
+
         }
 
         private void btnBlue1_Click(object sender, EventArgs e)
@@ -546,6 +560,8 @@ namespace yutgame
                     if (blue) lastShortCutCheck2 = 0;
                 }
             }
+            bluehorse1=1;
+            Sendyut();
             finish();
         }
 
@@ -892,6 +908,8 @@ namespace yutgame
                         lastShortCutCheck1 = 0;
                 }
             }
+            bluehorse2=1;
+            Sendyut();
             finish();
         }
 
@@ -1183,6 +1201,8 @@ namespace yutgame
                     if (red) lastShortCutCheck4 = 0;
                 }
             }
+            redhorse1=1;
+            Sendyut();
             finish();
         }
 
@@ -1481,6 +1501,8 @@ namespace yutgame
                     if (red) lastShortCutCheck3 = 0;
                 }
             }
+            redhorse2=1;
+            Sendyut();
             finish();
         }
 
@@ -1584,13 +1606,18 @@ namespace yutgame
             {
                 while (m_bConnect)
                 {
-                    string szMessage = m_Read.ReadLine();
+                    
+                  string a=m_Read.ReadLine();
+                  string b=m_Read.ReadLine();
+                    int aa=Int32.Parse(a);
+                    int bb=Int32.Parse(b);
 
-                    if (szMessage != null)
-                        Message("상대방 >>> :" + szMessage);
 
-                }
-            }
+                    if (yutinfo != null)
+                        Message("상대방 >>> :" + aa);
+                         Message("상대방 >>> :" + bb);
+
+                }}
             catch
             {
                 Message("데이터를 읽는 과정에서 오류가 발생");
@@ -1629,6 +1656,122 @@ namespace yutgame
                 btn_Server.Text = "생성";
             }
         }
+        void Sendyut()
+        {
+            try
+            {
+                
+                int i;
+                if (bluehorse1 > 0)
+                {
+                    i=1;
+                }
+                else if(bluehorse2 > 0)
+                {
+                    i=2;
+                }
+                else if (redhorse1 > 0)
+                {
+                    i=3;
+                }
+                else
+                    i=4;
+
+                m_Write.WriteLine(num);
+                m_Write.WriteLine(i);r
+                m_Write.Flush();
+                yutswitch=1;
+
+ 
+            }
+            catch
+            {
+                Message("윷 전송 실패");
+            }
+
+        }
+        void Sendhorse()
+        {
+            
+            try
+            {
+                int i;
+                if (bluehorse1 > 0)
+                {
+                    i=1;
+                }
+                else if(bluehorse2 > 0)
+                {
+                    i=2;
+                }
+                else if (redhorse1 > 0)
+                {
+                    i=3;
+                }
+                else
+                    i=4;
+                m_Write.WriteLine(i);
+                m_Write.Flush();
+
+ 
+            }
+            catch
+            {
+                Message("말 전송 실패");
+            }
+        }
+        /*void Receiveyut()
+        {
+            try
+            {
+                while (m_bConnect==true&&yutswitch==-1)
+                {
+                    string oppyut = m_Read.ReadLine();
+                    oppyut2=Int32.Parse(oppyut);
+                    if (oppyut2==-1)
+                    {
+                        oppyut="빽도";
+                    }
+                    else if (oppyut2 == 1) { oppyut="도";}
+                    else if (oppyut2 == 2) { oppyut="개";}
+                    else if (oppyut2 == 3) {oppyut="걸"; }
+                    else if(oppyut2 == 4)
+                    {
+                        oppyut="개";
+                    }
+                    else oppyut="모";
+                    if (oppyut != null)
+                        Message("상대방이 " + oppyut+"이(가) 나왔습니다");
+
+                }
+            }
+            catch
+            {
+                Message("데이터를 읽는 과정에서 오류가 발생");
+
+            }
+
+        }*/
+       /* void Receivehorse()
+        {
+            try
+            {
+                while (m_bConnect)
+                {
+                    string opphorse = m_Read.ReadLine();
+
+                   opphorse2 = Int32.Parse(opphorse);
+                   
+
+                }
+            }
+            catch
+            {
+                Message("데이터를 읽는 과정에서 오류가 발생");
+
+            }
+
+        }*/
 
         private void btn_Connect_Click(object sender, EventArgs e)
         {
