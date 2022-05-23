@@ -1771,7 +1771,7 @@ namespace yutgame
 
             }
 
-        }*/
+        }주석 끝*/
 
         private void btn_Connect_Click(object sender, EventArgs e)
         {
