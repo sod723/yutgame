@@ -274,7 +274,7 @@ namespace yutgame
             this.btnRed2.Text = "Red2";
             this.btnRed2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRed2.UseVisualStyleBackColor = true;
-            this.btnRed2.Click += new System.EventHandler(this.btnRed2_Click);
+            this.btnRed2.Click += new System.EventHandler(this.btnGo_Click);
             // 
             // btnRed1
             // 
@@ -287,7 +287,7 @@ namespace yutgame
             this.btnRed1.Text = "Red1";
             this.btnRed1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRed1.UseVisualStyleBackColor = true;
-            this.btnRed1.Click += new System.EventHandler(this.btnRed1_Click);
+            this.btnRed1.Click += new System.EventHandler(this.btnGo_Click);
             // 
             // btnBlue2
             // 
@@ -300,7 +300,7 @@ namespace yutgame
             this.btnBlue2.Text = "Blue2";
             this.btnBlue2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBlue2.UseVisualStyleBackColor = true;
-            this.btnBlue2.Click += new System.EventHandler(this.btnBlue2_Click);
+            this.btnBlue2.Click += new System.EventHandler(this.btnGo_Click);
             // 
             // btnBlue1
             // 
@@ -313,7 +313,7 @@ namespace yutgame
             this.btnBlue1.Text = "Blue1";
             this.btnBlue1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBlue1.UseVisualStyleBackColor = true;
-            this.btnBlue1.Click += new System.EventHandler(this.btnBlue1_Click);
+            this.btnBlue1.Click += new System.EventHandler(this.btnGo_Click);
             // 
             // panel1
             // 

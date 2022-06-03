@@ -99,6 +99,10 @@ namespace yutgame
         public Form1()
         {
             InitializeComponent();
+            btnBlue1.Enabled = false;
+            btnBlue2.Enabled = false;
+            btnRed1.Enabled = false;
+            btnRed2.Enabled = false;
             IP_Address.Text = "127.0.0.1";
             PORT_Number.Text = "7777";
         }
@@ -172,7 +176,6 @@ namespace yutgame
                     pb3[reset].Image = null;
             }
         }
-
         // 말 잡혔을 때 clear
         public void clear(int dol)
         {
@@ -266,10 +269,8 @@ namespace yutgame
 
         }
 
-        private void btnBlue1_Click(object sender, EventArgs e)
+        private void Blue1(int num) 
         {
-            //PictureBox[] pb0 = new PictureBox[] { horsePos20, horsePos1 };
-
             //외곽
             PictureBox[] pb1 = new PictureBox[] { horsePos1, horsePos2, horsePos3, horsePos4, horsePos5, horsePos6, horsePos7, horsePos8, horsePos9, horsePos10, horsePos11, horsePos12, horsePos13, horsePos14, horsePos15, horsePos16, horsePos17, horsePos18, horsePos19, horsePos20, horsePos1, not1, not2, not3, not4, not5, not6, not7 };
             //1st대각선
@@ -567,13 +568,11 @@ namespace yutgame
                     lastShortCutCheck1 = 0;
                     if (blue) lastShortCutCheck2 = 0;
                 }
-            }
-            bluehorse1=1;
-            Sendyut();
+            } 
+            bluehorse1=1; 
             finish();
         }
-
-        private void btnBlue2_Click(object sender, EventArgs e)
+        private void Blue2(int num)
         {
             PictureBox[] pb0 = new PictureBox[] { horsePos20, horsePos1 };
             //외곽
@@ -917,11 +916,9 @@ namespace yutgame
                 }
             }
             bluehorse2=1;
-            Sendyut();
             finish();
         }
-
-        private void btnRed1_Click(object sender, EventArgs e)
+        private void Red1(int num)
         {
             //외곽
             PictureBox[] pb1 = new PictureBox[] { horsePos1, horsePos2, horsePos3, horsePos4, horsePos5, horsePos6, horsePos7, horsePos8, horsePos9, horsePos10, horsePos11, horsePos12, horsePos13, horsePos14, horsePos15, horsePos16, horsePos17, horsePos18, horsePos19, horsePos20, horsePos1, not1, not2, not3, not4, not5, not6, not7 };
@@ -1210,11 +1207,9 @@ namespace yutgame
                 }
             }
             redhorse1=1;
-            Sendyut();
             finish();
         }
-
-        private void btnRed2_Click(object sender, EventArgs e)
+        private void Red2(int num)
         {
             //외곽
             PictureBox[] pb1 = new PictureBox[] { horsePos1, horsePos2, horsePos3, horsePos4, horsePos5, horsePos6, horsePos7, horsePos8, horsePos9, horsePos10, horsePos11, horsePos12, horsePos13, horsePos14, horsePos15, horsePos16, horsePos17, horsePos18, horsePos19, horsePos20, horsePos1, not1, not2, not3, not4, not5, not6, not7 };
@@ -1510,54 +1505,58 @@ namespace yutgame
                 }
             }
             redhorse2=1;
-            Sendyut();
             finish();
         }
-
-    public void Message(string msg)
+        private void btnGo_Click(object sender,EventArgs e)
         {
-            this.Invoke(new MethodInvoker(delegate ()
+            var btn = sender as Button;
+            if( btn != null)
             {
-                txtChat.AppendText(msg + "\r\n");
-                txtChat.Focus();
-                txtChat.ScrollToCaret();
-                txtSend.Focus();
-            }));
-
+                if (btn == btnBlue1)
+                    Blue1(num);
+                if (btn == btnBlue2)
+                    Blue2(num);
+                if (btn == btnRed1)
+                    Red1(num);
+                if (btn == btnRed2)
+                    Red2(num); 
+                Sendyut();
+            }
         }
+
+        public void Message(string msg)
+            {
+                this.Invoke(new MethodInvoker(delegate ()
+                {
+                    txtChat.AppendText(msg + "\r\n");
+                    txtChat.Focus();
+                    txtChat.ScrollToCaret();
+                    txtSend.Focus();
+                }));
+
+            }
         public void ServerStart()
         {
             try
             {
                 int PORT = Convert.ToInt32(PORT_Number.Text);
-                int PORT2 = Convert.ToInt32(PORT_Number.Text)+1;
                 m_listener = new TcpListener(PORT);
-                m_listener2 = new TcpListener(PORT2);
                 m_listener.Start();
-                m_listener2.Start();// 오류발생
 
                 m_bStop = true;
-                Message("참가자 접속 대기중");
                 while (m_bStop)
                 {
                     TcpClient hClient = m_listener.AcceptTcpClient();
-                    TcpClient hClient2 = m_listener2.AcceptTcpClient();
                     if (hClient.Connected)
                     {
                         m_bConnect = true;
-                        Message("참가자 접속");
                         m_Stream = hClient.GetStream();
-                         m_Stream2 = hClient2.GetStream();
 
                         m_Read = new StreamReader(m_Stream);
-                        m_Read2 = new StreamReader(m_Stream2);
 
                         m_Write = new StreamWriter(m_Stream);
-                        m_Write2 = new StreamWriter(m_Stream2);
                         m_ThReader = new Thread(new ThreadStart(Receive));
-                        m_ThReader2 = new Thread(new ThreadStart(Receiveyut));
                         m_ThReader.Start();
-                        m_ThReader2.Start();
                     }
                 }
             }
@@ -1566,6 +1565,36 @@ namespace yutgame
                 return;
             }
         }
+        public void ServerStart2()
+    {
+        try
+        {
+            int PORT2 = Convert.ToInt32(PORT_Number.Text)+1;
+            m_listener2 = new TcpListener(PORT2);
+            m_listener2.Start();
+
+            m_bStop = true;
+            while (m_bStop)
+            {
+                TcpClient hClient2 = m_listener2.AcceptTcpClient();
+                if (hClient2.Connected)
+                {
+                    m_bConnect = true;
+                    m_Stream2 = hClient2.GetStream();
+
+                    m_Read2 = new StreamReader(m_Stream2);
+
+                    m_Write2 = new StreamWriter(m_Stream2);
+                    m_ThReader2 = new Thread(new ThreadStart(Receiveyut));
+                    m_ThReader2.Start();
+                }
+            }
+        }
+        catch
+        {
+            return;
+        }
+    }
         public void ServerStop()
         {
             if (!m_bStop)
@@ -1575,16 +1604,25 @@ namespace yutgame
 
             if (m_Read != null)
                 m_Read.Close();
-            m_Write.Close();
-            m_Read2.Close();
-            m_Write2.Close();
+            if(m_Write != null)
+                m_Write.Close();
+            if(m_Read2 !=null)
+                m_Read2.Close();
+            if( m_Write2 != null)
+                m_Write2.Close();
 
-            m_Stream.Close();
-            m_Stream2.Close();
-            m_ThReader.Abort();
-            m_ThReader2.Abort();
-            m_thServer.Abort();
-            m_thServer2.Abort();
+            if(m_Stream !=null)
+                m_Stream.Close();
+            if(m_Stream2 != null)
+                m_Stream2.Close();
+            if(m_ThReader != null)
+                m_ThReader.Abort();
+            if(m_ThReader2 != null)
+                m_ThReader2.Abort();
+            if(m_thServer != null)
+                m_thServer.Abort();
+            if(m_thServer2 != null)
+                m_thServer2.Abort();
             Message("서비스 종료");
         }
         public void Disconnect()
@@ -1592,15 +1630,23 @@ namespace yutgame
             if (!m_bConnect)
                 return;
             m_bConnect = false;
-            m_Read.Close();
-            m_Write.Close();
-            m_Read2.Close();
-            m_Write2.Close();
+            if(m_Read !=null)
+                m_Read.Close();
+            if(m_Write !=null)
+                m_Write.Close();
+            if(m_Read2!=null)
+                m_Read2.Close();
+            if(m_Write2!=null)
+                m_Write2.Close();
 
-            m_Stream.Close();
-            m_ThReader.Abort();
-            m_Stream2.Close();
-            m_ThReader2.Abort();
+            if(m_Stream !=null)
+                m_Stream.Close();
+            if(m_ThReader !=null)
+                m_ThReader.Abort();
+            if(m_Stream2 !=null)
+                m_Stream2.Close();
+            if(m_ThReader2 !=null)
+                m_ThReader2.Abort();
             Message("상대방과 연결 중단");
         }
         public void Connect()
@@ -1663,11 +1709,14 @@ namespace yutgame
         {
             try
             {
-                m_Write.WriteLine(txtSend.Text);
-                m_Write.Flush();
+                if(m_Write != null)
+                {
+                    m_Write.WriteLine(txtSend.Text);
+                    m_Write.Flush();
 
-                Message(">>>: " + txtSend.Text);
-                txtSend.Text = "";
+                    Message(">>>: " + txtSend.Text);
+                    txtSend.Text = ""; 
+                }
             }
             catch
             {
@@ -1679,22 +1728,23 @@ namespace yutgame
         {
             if (btn_Server.Text == "생성")
             {
-                btnRed1.Enabled = false;
-                btnRed2.Enabled = false;
+                btnBlue1.Enabled = true;
+                btnBlue2.Enabled = true;
 
                 m_thServer = new Thread(new ThreadStart(ServerStart));
-                m_thServer2 = new Thread(new ThreadStart(ServerStart));
+                this.Invoke(new MethodInvoker(delegate () { 
+                m_thServer2 = new Thread(new ThreadStart(ServerStart2));
+                m_thServer2.Start(); }));
 
                 m_thServer.Start();
-                m_thServer2.Start();
+                
                 btn_Server.Text = "멈춤";
 
             }
             else
             {
-                btnRed1.Enabled = true;
-                btnRed2.Enabled = true;
-
+                btnBlue1.Enabled = false;
+                btnBlue2.Enabled = false; 
                 ServerStop();
                 btn_Server.Text = "생성";
             }
@@ -1720,12 +1770,11 @@ namespace yutgame
                 else
                     i=4;
 
-                m_Write2.WriteLine(num);
-                m_Write2.WriteLine(i);
-                m_Write2.Flush();
-
-
- 
+                if (m_Write2 != null) {
+                    m_Write2.WriteLine(num);
+                    m_Write2.WriteLine(i);
+                    m_Write2.Flush();
+                } 
             }
             catch
             {
@@ -1741,8 +1790,9 @@ namespace yutgame
                 while (m_bConnect)
                 {
                     
+                   // 윷정보 : -1, 1,2,3,4,5
                   string a=m_Read2.ReadLine();
-                 
+                  // 말정보 : 1,2,3,4,
                   string b=m_Read2.ReadLine();
                      int aa=Int32.Parse(a);
                     int bb=Int32.Parse(b);
@@ -1752,6 +1802,21 @@ namespace yutgame
                         Message("상대방 >>> :" + aa);
                          Message("상대방 >>> :" + bb);
 
+                    switch (bb)
+                    {
+                        case 1:
+                            Blue1(aa);
+                            break;
+                        case 2:
+                            Blue2(aa);
+                            break;
+                        case 3:
+                            Red1(aa);
+                            break;
+                        case 4:
+                            Red2(aa);
+                            break;
+                    }
                 }
             }
             catch
@@ -1790,16 +1855,16 @@ namespace yutgame
                 Connect();
                 if (m_bConnect)
                 {
-                    btnBlue1.Enabled = false;
-                    btnBlue2.Enabled = false;
+                    btnRed1.Enabled = true;
+                    btnRed2.Enabled = true;
 
                     btn_Connect.Text = "끊기";
                 }
             }
             else
             {
-                btnBlue1.Enabled = true;
-                btnBlue2.Enabled = true;
+                btnRed1.Enabled = false;
+                btnRed2.Enabled = false;
                 Disconnect();
                 btn_Connect.Text = "연결";
                 
