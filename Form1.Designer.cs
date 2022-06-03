@@ -147,6 +147,7 @@ namespace yutgame
             this.txtChat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtChat.Size = new System.Drawing.Size(268, 220);
             this.txtChat.TabIndex = 2;
+            this.txtChat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtChat_KeyPress);
             // 
             // txtSend
             // 

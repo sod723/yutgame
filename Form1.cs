@@ -107,6 +107,61 @@ namespace yutgame
             PORT_Number.Text = "7777";
         }
 
+        private void allClear()
+        {
+            blue = false;
+            red = false;
+            firstShortCutCnt1 = 0;
+            firstShortCutCnt2 = 0;
+            firstShortCutCnt3 = 0;
+            firstShortCutCnt4 = 0;
+            outlineCnt1 = 0;
+            outlineCnt2 = 0;
+            outlineCnt3 = 0;
+            outlineCnt4 = 0;
+            centerShortCutCnt1 = 0;
+            centerShortCutCnt2 = 0;
+            centerShortCutCnt3 = 0;
+            centerShortCutCnt4 = 0;
+            lastShortCutCnt1 = 0;
+            lastShortCutCnt2 = 0;
+            lastShortCutCnt3 = 0;
+            lastShortCutCnt4 = 0;
+            label1.Text = "";
+            label2.Text = "";
+            label3.Text = "";
+            label4.Text = "";
+            firstShortCutCheck1 = 0;
+            centerShortCutCheck1 = 0;
+            lastShortCutCheck1 = 0;
+            firstShortCutCheck3 = 0;
+            centerShortCutCheck3 = 0;
+            lastShortCutCheck3 = 0;
+            firstShortCutCheck2 = 0;
+            centerShortCutCheck2 = 0;
+            lastShortCutCheck2 = 0;
+            firstShortCutCheck4 = 0;
+            centerShortCutCheck4 = 0;
+            lastShortCutCheck4 = 0;
+            btnBlue1.Visible = true;
+            btnBlue2.Visible = true;
+            btnRed1.Visible = true;
+            btnRed2.Visible = true;
+
+            //외곽
+            PictureBox[] pb1 = new PictureBox[] { horsePos1, horsePos2, horsePos3, horsePos4, horsePos5, horsePos6, horsePos7, horsePos8, horsePos9, horsePos10, horsePos11, horsePos12, horsePos13, horsePos14, horsePos15, horsePos16, horsePos17, horsePos18, horsePos19, horsePos20, horsePos1, not1, not2, not3, not4, not5, not6, not7 };
+            //1st대각선
+            PictureBox[] pb2 = new PictureBox[] { horsePos6, horsePos21, horsePos22, horsePos28, horsePos24, horsePos25, horsePos16, horsePos17, horsePos18, horsePos19, horsePos20, horsePos1, not1, not2, not3, not4, not5, not6, not7 };
+            //2nd대각선
+            PictureBox[] pb3 = new PictureBox[] { horsePos11, horsePos26, horsePos27, horsePos28, horsePos29, horsePos30, horsePos1, not1, not2, not3, not4, not5, not6, not7 };
+            //윷놀이판 초기화
+            for (int reset = 0; reset < 23; reset++)
+                pb1[reset].Image = null;
+            for (int reset = 0; reset < 12; reset++)
+                pb2[reset].Image = null;
+            for (int reset = 0; reset < 7; reset++)
+                pb3[reset].Image = null; 
+        }
         // 게임 끝
         private void finish()
         {
@@ -278,6 +333,8 @@ namespace yutgame
             //2nd대각선
             PictureBox[] pb3 = new PictureBox[] { horsePos11, horsePos26, horsePos27, horsePos28, horsePos29, horsePos30, horsePos1, not1, not2, not3, not4, not5, not6, not7 };
 
+            if (num == 0)
+                return;
 
             //외각라인 
             if (outlineCnt1 < 22)
@@ -547,6 +604,8 @@ namespace yutgame
             //2nd대각선
             PictureBox[] pb3 = new PictureBox[] { horsePos11, horsePos26, horsePos27, horsePos28, horsePos29, horsePos30, horsePos1, not1, not2, not3, not4, not5, not6, not7 };
 
+            if (num == 0)
+                return;
             if (outlineCnt2 < 22)
             {
                 if (outlineCnt2 == 0)
@@ -843,7 +902,8 @@ namespace yutgame
             //2nd대각선
             PictureBox[] pb3 = new PictureBox[] { horsePos11, horsePos26, horsePos27, horsePos28, horsePos29, horsePos30, horsePos1, not1, not2, not3, not4, not5, not6, not7 };
 
-
+            if (num == 0)
+                return; 
             //외각라인 
             if (outlineCnt3 < 22) {
                 if (outlineCnt3 == 0)
@@ -1097,6 +1157,8 @@ namespace yutgame
             PictureBox[] pb3 = new PictureBox[] { horsePos11, horsePos26, horsePos27, horsePos28, horsePos29, horsePos30, horsePos1, not1, not2, not3, not4, not5, not6, not7 };
 
 
+            if (num == 0)
+                return;
             //외각라인 
             if (outlineCnt4 < 22) {
                 if (outlineCnt4 == 0)
@@ -1750,10 +1812,7 @@ namespace yutgame
                 ServerStop();
                 btn_Server.Text = "생성";
             }
-            clear(1);
-            clear(2);
-            clear(3);
-            clear(4);
+            allClear();
         }
         void Sendyut()
         {
@@ -1821,7 +1880,6 @@ namespace yutgame
             }
 
         }
-
         void Receiveyut()
         {
             try
@@ -1870,8 +1928,6 @@ namespace yutgame
                                 centerShortCutCheck1 = 1;
                             else if (cc == 3)
                                 lastShortCutCheck1 = 1;
-                            else
-                                continue;
                             Message("상대방이 " + yutInfo + "가 나왔습니다!");
                             Blue1(aa);
                             break;
@@ -1882,8 +1938,6 @@ namespace yutgame
                                 centerShortCutCheck2 = 1;
                             else if (cc == 3)
                                 lastShortCutCheck2 = 1;
-                            else
-                                continue;
                             Message("상대방이 " + yutInfo + "가 나왔습니다!");
                             Blue2(aa);
                             break;
@@ -1894,8 +1948,6 @@ namespace yutgame
                                 centerShortCutCheck3 = 1;
                             else if (cc == 3)
                                 lastShortCutCheck3 = 1;
-                            else
-                                continue;
                             Message("상대방이 " + yutInfo + "가 나왔습니다!");
                             Red1(aa);
                             break;
@@ -1906,8 +1958,6 @@ namespace yutgame
                                 centerShortCutCheck4 = 1;
                             else if (cc == 3)
                                 lastShortCutCheck4 = 1;
-                            else
-                                continue;
                             Message("상대방이 " + yutInfo + "가 나왔습니다!");
                             Red2(aa);
                             break;
@@ -1932,6 +1982,7 @@ namespace yutgame
                 {
                     btnRed1.Enabled = true;
                     btnRed2.Enabled = true;
+                    btnThrow.Enabled = false;
 
                     btn_Connect.Text = "끊기";
                 }
@@ -1940,13 +1991,11 @@ namespace yutgame
             {
                 btnRed1.Enabled = false;
                 btnRed2.Enabled = false;
+                btnThrow.Enabled = true;
                 Disconnect();
                 btn_Connect.Text = "연결";
             }
-            clear(1);
-            clear(2);
-            clear(3);
-            clear(4);
+            allClear();
         }
 
         private void Send_Message_Click(object sender, EventArgs e)
@@ -1970,6 +2019,11 @@ namespace yutgame
         {
             ServerStop();
             Disconnect();
+        }
+
+        private void txtChat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }
