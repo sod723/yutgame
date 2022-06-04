@@ -2162,7 +2162,7 @@ namespace yutgame
                                     centerShortCutCheck1 = 1;
                                 else if (cc == 3)
                                     lastShortCutCheck1 = 1;
-                                Message("상대방이 " + yutInfo + "가 나왔습니다!");
+                                Message("상대방이 " + yutInfo + "이(가) 나왔습니다!");
                                 Blue1(aa);
                                 if (tt == 0)
                                     Switchon();
@@ -2176,7 +2176,7 @@ namespace yutgame
                                     centerShortCutCheck2 = 1;
                                 else if (cc == 3)
                                     lastShortCutCheck2 = 1;
-                                Message("상대방이 " + yutInfo + "가 나왔습니다!");
+                                Message("상대방이 " + yutInfo + "이(가) 나왔습니다!");
                                 Blue2(aa);
                                 if (tt == 0)
                                     Switchon();
@@ -2190,7 +2190,7 @@ namespace yutgame
                                     centerShortCutCheck3 = 1;
                                 else if (cc == 3)
                                     lastShortCutCheck3 = 1;
-                                Message("상대방이 " + yutInfo + "가 나왔습니다!");
+                                Message("상대방이 " + yutInfo + "이(가) 나왔습니다!");
                                 Red1(aa);
                                 if (tt == 0)
                                     Switchon();
@@ -2204,7 +2204,7 @@ namespace yutgame
                                     centerShortCutCheck4 = 1;
                                 else if (cc == 3)
                                     lastShortCutCheck4 = 1;
-                                Message("상대방이 " + yutInfo + "가 나왔습니다!");
+                                Message("상대방이 " + yutInfo + "이(가) 나왔습니다!");
                                 Red2(aa);
                                 if (tt == 0)
                                     Switchon();

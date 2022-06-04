@@ -72,7 +72,6 @@ C:\새 폴더\bin\Debug\yutgame.exe
 C:\새 폴더\bin\Debug\yutgame.pdb
 C:\새 폴더\obj\Debug\yutgame.csproj.AssemblyReference.cache
 C:\새 폴더\obj\Debug\yutgame.Form1.resources
-C:\새 폴더\obj\Debug\yutgame.Form2.resources
 C:\새 폴더\obj\Debug\yutgame.Properties.Resources.resources
 C:\새 폴더\obj\Debug\yutgame.csproj.GenerateResource.cache
 C:\새 폴더\obj\Debug\yutgame.csproj.CoreCompileInputs.cache
