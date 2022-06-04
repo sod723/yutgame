@@ -2151,65 +2151,69 @@ namespace yutgame
                             break;
                     }
 
-                    switch (bb)
+                    this.Invoke(new MethodInvoker(delegate ()
                     {
-                        case 1:
-                            if (cc == 1)
-                                firstShortCutCheck1 = 1;
-                            else if (cc == 2)
-                                centerShortCutCheck1 = 1;
-                            else if (cc == 3)
-                                lastShortCutCheck1 = 1;
-                            Message("상대방이 " + yutInfo + "가 나왔습니다!");
-                            Blue1(aa);
-                            if (tt == 0)
-                                Switchon();
-                            else
-                                Switchoff();
-                            break;
-                        case 2:
-                            if (cc == 1)
-                                firstShortCutCheck2 = 1;
-                            else if (cc == 2)
-                                centerShortCutCheck2 = 1;
-                            else if (cc == 3)
-                                lastShortCutCheck2 = 1;
-                            Message("상대방이 " + yutInfo + "가 나왔습니다!");
-                            Blue2(aa);
-                            if (tt == 0)
-                                Switchon();
-                            else
-                                Switchoff();
-                            break;
-                        case 3:
-                            if (cc == 1)
-                                firstShortCutCheck3 = 1;
-                            else if (cc == 2)
-                                centerShortCutCheck3 = 1;
-                            else if (cc == 3)
-                                lastShortCutCheck3 = 1;
-                            Message("상대방이 " + yutInfo + "가 나왔습니다!");
-                            Red1(aa);
-                            if (tt == 0)
-                                Switchon();
-                            else
-                                Switchoff();
-                            break;
-                        case 4:
-                            if (cc == 1)
-                                firstShortCutCheck4 = 1;
-                            else if (cc == 2)
-                                centerShortCutCheck4 = 1;
-                            else if (cc == 3)
-                                lastShortCutCheck4 = 1;
-                            Message("상대방이 " + yutInfo + "가 나왔습니다!");
-                            Red2(aa);
-                            if (tt == 0)
-                                Switchon();
-                            else
-                                Switchoff();
-                            break;
-                    }
+                        switch (bb)
+                        {
+                            case 1:
+                                if (cc == 1)
+                                    firstShortCutCheck1 = 1;
+                                else if (cc == 2)
+                                    centerShortCutCheck1 = 1;
+                                else if (cc == 3)
+                                    lastShortCutCheck1 = 1;
+                                Message("상대방이 " + yutInfo + "가 나왔습니다!");
+                                Blue1(aa);
+                                if (tt == 0)
+                                    Switchon();
+                                else
+                                    Switchoff();
+                                break;
+                            case 2:
+                                if (cc == 1)
+                                    firstShortCutCheck2 = 1;
+                                else if (cc == 2)
+                                    centerShortCutCheck2 = 1;
+                                else if (cc == 3)
+                                    lastShortCutCheck2 = 1;
+                                Message("상대방이 " + yutInfo + "가 나왔습니다!");
+                                Blue2(aa);
+                                if (tt == 0)
+                                    Switchon();
+                                else
+                                    Switchoff();
+                                break;
+                            case 3:
+                                if (cc == 1)
+                                    firstShortCutCheck3 = 1;
+                                else if (cc == 2)
+                                    centerShortCutCheck3 = 1;
+                                else if (cc == 3)
+                                    lastShortCutCheck3 = 1;
+                                Message("상대방이 " + yutInfo + "가 나왔습니다!");
+                                Red1(aa);
+                                if (tt == 0)
+                                    Switchon();
+                                else
+                                    Switchoff();
+                                break;
+                            case 4:
+                                if (cc == 1)
+                                    firstShortCutCheck4 = 1;
+                                else if (cc == 2)
+                                    centerShortCutCheck4 = 1;
+                                else if (cc == 3)
+                                    lastShortCutCheck4 = 1;
+                                Message("상대방이 " + yutInfo + "가 나왔습니다!");
+                                Red2(aa);
+                                if (tt == 0)
+                                    Switchon();
+                                else
+                                    Switchoff();
+                                break;
+                        }
+                        return;
+                    }));
                 }
             }
             catch

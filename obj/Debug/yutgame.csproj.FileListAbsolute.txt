@@ -55,3 +55,15 @@ C:\Users\sungm\source\repos\yutgame-main2\yutgame-main\obj\Debug\yutgame.csproj.
 C:\Users\sungm\source\repos\yutgame-main2\yutgame-main\obj\Debug\yutgame.csproj.CoreCompileInputs.cache
 C:\Users\sungm\source\repos\yutgame-main2\yutgame-main\obj\Debug\yutgame.exe
 C:\Users\sungm\source\repos\yutgame-main2\yutgame-main\obj\Debug\yutgame.pdb
+C:\Users\HC\Source\Repos\yutgame\bin\Debug\yutgame.exe.config
+C:\Users\HC\Source\Repos\yutgame\bin\Debug\yutgame.exe
+C:\Users\HC\Source\Repos\yutgame\bin\Debug\yutgame.pdb
+C:\Users\HC\Source\Repos\yutgame\obj\Debug\yutgame.csproj.AssemblyReference.cache
+C:\Users\HC\Source\Repos\yutgame\obj\Debug\yutgame.csproj.SuggestedBindingRedirects.cache
+C:\Users\HC\Source\Repos\yutgame\obj\Debug\yutgame.Form1.resources
+C:\Users\HC\Source\Repos\yutgame\obj\Debug\yutgame.Form2.resources
+C:\Users\HC\Source\Repos\yutgame\obj\Debug\yutgame.Properties.Resources.resources
+C:\Users\HC\Source\Repos\yutgame\obj\Debug\yutgame.csproj.GenerateResource.cache
+C:\Users\HC\Source\Repos\yutgame\obj\Debug\yutgame.csproj.CoreCompileInputs.cache
+C:\Users\HC\Source\Repos\yutgame\obj\Debug\yutgame.exe
+C:\Users\HC\Source\Repos\yutgame\obj\Debug\yutgame.pdb
