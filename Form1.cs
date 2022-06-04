@@ -2261,11 +2261,7 @@ namespace yutgame
                 Send();
         }
 
-        private void Servercnt_Click(object sender, EventArgs e)
-        {
-            Form2 fm2 = new Form2();
-            fm2.Show();
-        }
+
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {

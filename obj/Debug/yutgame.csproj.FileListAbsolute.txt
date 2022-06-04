@@ -67,3 +67,14 @@ C:\Users\HC\Source\Repos\yutgame\obj\Debug\yutgame.csproj.GenerateResource.cache
 C:\Users\HC\Source\Repos\yutgame\obj\Debug\yutgame.csproj.CoreCompileInputs.cache
 C:\Users\HC\Source\Repos\yutgame\obj\Debug\yutgame.exe
 C:\Users\HC\Source\Repos\yutgame\obj\Debug\yutgame.pdb
+C:\새 폴더\bin\Debug\yutgame.exe.config
+C:\새 폴더\bin\Debug\yutgame.exe
+C:\새 폴더\bin\Debug\yutgame.pdb
+C:\새 폴더\obj\Debug\yutgame.csproj.AssemblyReference.cache
+C:\새 폴더\obj\Debug\yutgame.Form1.resources
+C:\새 폴더\obj\Debug\yutgame.Form2.resources
+C:\새 폴더\obj\Debug\yutgame.Properties.Resources.resources
+C:\새 폴더\obj\Debug\yutgame.csproj.GenerateResource.cache
+C:\새 폴더\obj\Debug\yutgame.csproj.CoreCompileInputs.cache
+C:\새 폴더\obj\Debug\yutgame.exe
+C:\새 폴더\obj\Debug\yutgame.pdb
