@@ -291,30 +291,36 @@ namespace yutgame
             {
                 MessageBox.Show("빽도!!");
                 num = -1;
+                btnThrow.Enabled = false;
             }
             else if (1 < yutnum && yutnum <= 4) //도
             {
                 MessageBox.Show("도!!");
                 num = 1;
+                btnThrow.Enabled = false;
             }
             else if (4 < yutnum && yutnum <= 10) //개
             {
                 MessageBox.Show("개!!");
                 num = 2;
+                btnThrow.Enabled = false;
             }
             else if (10 < yutnum && yutnum <= 14) //걸
             {
                 MessageBox.Show("걸!!");
                 num = 3;
+                btnThrow.Enabled = false;
             }
             else if (14 < yutnum && yutnum <= 15) //윷
             {
                 MessageBox.Show("윷!! 한번 더!!!");
                 num = 4;
+                btnThrow.Enabled = true;
             }
             else if (yutnum == 16) //모
             {
                 MessageBox.Show("모!! 한번 더!!!");
+                btnThrow.Enabled = true;
                 num = 5;
             }
         bluehorse1=-1;
@@ -375,15 +381,18 @@ namespace yutgame
                                 //1P의 돌이 2P 첫번째돌을 만낫을때
                                 if (pb1[outlineCnt1].Image == (Image)red1) {
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
+                                    Switchon();
                                     clear(3); 
                                 }
                                 // 1P의 돌이 2P의 두번째돌을 만났을때
                                 if (pb1[outlineCnt1].Image == (Image)red2) {
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
+                                    Switchon();
                                     clear(4);
                                 }
                                 if (pb1[outlineCnt1].Image == (Image)red_with) {
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
+                                    Switchon();
                                     clear(3);
                                     clear(4);
                                     red = false;
@@ -431,14 +440,17 @@ namespace yutgame
 
                                 if (pb2[firstShortCutCnt1].Image == (Image)red1) {
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                    Switchon();
                                     clear(3);
                                 }
                                 if (pb2[firstShortCutCnt1].Image == (Image)red2) {
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                    Switchon();
                                     clear(4);
                                 }
                                 if (pb2[firstShortCutCnt1].Image == (Image)red_with) {
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                    Switchon();
                                     clear(3);
                                     clear(4);
                                     red = false;
@@ -469,14 +481,17 @@ namespace yutgame
                             }
                             if (pb3[3 + centerShortCutCnt1].Image == (Image)red1) {
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                Switchon();
                                 clear(3);
                             }
                             if (pb3[3 + centerShortCutCnt1].Image == (Image)red2) {
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                Switchon();
                                 clear(4);
                             }
                             if (pb3[3 + centerShortCutCnt1].Image == (Image)red_with) {
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                Switchon();
                                 clear(3);
                                 clear(4);
                                 red = false;
@@ -520,14 +535,17 @@ namespace yutgame
                             }
                             if (pb3[lastShortCutCnt1].Image == (Image)red1) {
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                Switchon();
                                 clear(3);
                             }
                             if (pb3[lastShortCutCnt1].Image == (Image)red2) {
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                Switchon();
                                 clear(4);
                             }
                             if (pb3[lastShortCutCnt1].Image == (Image)red_with) {
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                Switchon();
                                 clear(3);
                                 clear(4);
                                 red = false;
@@ -642,6 +660,7 @@ namespace yutgame
                                 {
                                     pb1[outlineCnt2].Image = (Image)blue2;
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                    Switchon();
                                     clear(3);
 
                                 }
@@ -650,11 +669,13 @@ namespace yutgame
                                     pb1[outlineCnt2].Image = (Image)blue2;
                                     clear(4);
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                    Switchon();
                                 }
                                 if (pb1[outlineCnt2].Image == (Image)red_with)
                                 {
                                     pb1[outlineCnt2].Image = (Image)blue2;
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                    Switchon();
                                     clear(4);
                                     clear(3);
                                     red = false;
@@ -704,18 +725,21 @@ namespace yutgame
                                 {
                                     pb2[firstShortCutCnt2].Image = (Image)blue2;
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                    Switchon();
                                     clear(3);
                                 }
                                 if (pb2[firstShortCutCnt2].Image == (Image)red2)
                                 {
                                     pb2[firstShortCutCnt2].Image = (Image)blue2;
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                    Switchon();
                                     clear(4);
                                 }
                                 if (pb2[firstShortCutCnt2].Image == (Image)red_with)
                                 {
                                     pb2[firstShortCutCnt2].Image = (Image)blue2;
                                     MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                    Switchon();
                                     clear(3);
                                     clear(4);
                                     red = false;
@@ -753,16 +777,19 @@ namespace yutgame
                             if (pb3[3 + centerShortCutCnt2].Image == (Image)red1)
                             {
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
+                                Switchon();
                                 clear(3);
                             }
                             if (pb3[3 + centerShortCutCnt2].Image == (Image)red2)
                             {
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
+                                Switchon();
                                 clear(4);
                             }
                             if (pb3[3 + centerShortCutCnt2].Image == (Image)red_with)
                             {
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
+                                Switchon();
                                 clear(3);
                                 clear(4);
                                 red = false;
@@ -813,18 +840,21 @@ namespace yutgame
                             {
                                 pb3[lastShortCutCnt2].Image = (Image)blue2;
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
+                                Switchon();
                                 clear(3);
                             }
                             if (pb3[lastShortCutCnt2].Image == (Image)red2)
                             {
                                 pb3[lastShortCutCnt2].Image = (Image)blue2;
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
+                                Switchon();
                                 clear(4);
                             }
                             if (pb3[lastShortCutCnt2].Image == (Image)red_with)
                             {
                                 pb3[lastShortCutCnt2].Image = (Image)blue2;
                                 MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
+                                Switchon();
                                 clear(3);
                                 clear(4);
                                 red = false;
@@ -935,15 +965,18 @@ namespace yutgame
                                 //2P의 돌이 1P 첫번째돌을 만낫을때
                                 if (pb1[outlineCnt3].Image == (Image)blue1) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                    Switchon();
                                     clear(1);
                                 }
                                 // 2P의 돌이 1P의 두번째돌을 만났을때
                                 if (pb1[outlineCnt3].Image == (Image)blue2) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                    Switchon();
                                     clear(2);
                                 }
                                 if (pb1[outlineCnt3].Image == (Image)blue_with) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                    Switchon();
                                     clear(1);
                                     clear(2);
                                     blue = false;
@@ -986,14 +1019,17 @@ namespace yutgame
                                 }
                                 if (pb2[firstShortCutCnt3].Image == (Image)blue1) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
+                                    Switchon();
                                     clear(1);
                                 }
                                 if (pb2[firstShortCutCnt3].Image == (Image)blue2) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
+                                    Switchon();
                                     clear(2);
                                 }
                                 if (pb2[firstShortCutCnt3].Image == (Image)blue_with) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
+                                    Switchon();
                                     clear(1);
                                     clear(2);
                                     blue = false;
@@ -1024,14 +1060,18 @@ namespace yutgame
                             }
                             if (pb3[3 + centerShortCutCnt3].Image == (Image)blue1) {
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
+                                Switchon();
                                 clear(1);
                             }
                             if (pb3[3 + centerShortCutCnt3].Image == (Image)blue2) {
+
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
+                                Switchon();
                                 clear(2);
                             }
                             if (pb3[3 + centerShortCutCnt3].Image == (Image)blue_with) {
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
+                                Switchon();
                                 clear(1);
                                 clear(2);
                                 blue = false;
@@ -1072,14 +1112,17 @@ namespace yutgame
                             }
                             if (pb3[lastShortCutCnt3].Image == (Image)blue1) {
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
+                                Switchon();
                                 clear(1);
                             }
                             if (pb3[lastShortCutCnt3].Image == (Image)blue2) {
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
+                                Switchon();
                                 clear(2);
                             }
                             if (pb3[lastShortCutCnt3].Image == (Image)blue_with) {
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
+                                btnThrow.Enabled = true;
                                 clear(1);
                                 clear(2);
                                 blue = false;
@@ -1191,15 +1234,18 @@ namespace yutgame
                                 //2P의 돌이 1P 첫번째돌을 만낫을때
                                 if (pb1[outlineCnt4].Image == (Image)blue1) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                    Switchon();
                                     clear(1);
                                 }
                                 // 2P의 돌이 1P의 두번째돌을 만났을때
                                 if (pb1[outlineCnt4].Image == (Image)blue2) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                    Switchon();
                                     clear(2);
                                 }
                                 if (pb1[outlineCnt4].Image == (Image)blue_with) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                    Switchon();
                                     clear(1);
                                     clear(2);
                                     blue = false;
@@ -1242,14 +1288,17 @@ namespace yutgame
                                 }
                                 if (pb2[firstShortCutCnt4].Image == (Image)blue1) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
+                                    Switchon();
                                     clear(1);
                                 }
                                 if (pb2[firstShortCutCnt4].Image == (Image)blue2) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
+                                    Switchon();
                                     clear(2);
                                 }
                                 if (pb2[firstShortCutCnt4].Image == (Image)blue_with) {
                                     MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
+                                    Switchon();
                                     clear(1);
                                     clear(2);
                                     blue = false;
@@ -1281,14 +1330,17 @@ namespace yutgame
                             }
                             if (pb3[3 + centerShortCutCnt4].Image == (Image)blue1) {
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
+                                Switchon();
                                 clear(1);
                             }
                             if (pb3[3 + centerShortCutCnt4].Image == (Image)blue2) {
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
+                                Switchon();
                                 clear(2);
                             }
                             if (pb3[3 + centerShortCutCnt4].Image == (Image)blue_with) {
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
+                                Switchon();
                                 clear(1);
                                 clear(2);
                                 blue = false;
@@ -1332,14 +1384,17 @@ namespace yutgame
                             }
                             if (pb3[lastShortCutCnt4].Image == (Image)blue1) {
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
+                                Switchon();
                                 clear(1);
                             }
                             if (pb3[lastShortCutCnt4].Image == (Image)blue2) {
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
+                                Switchon();
                                 clear(2);
                             }
                             if (pb3[lastShortCutCnt4].Image == (Image)blue_with) {
                                 MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다.");
+                                Switchon();
                                 clear(1);
                                 clear(2);
                                 blue = false;
@@ -1584,6 +1639,7 @@ namespace yutgame
                     Red2(num); 
                 }
                 Sendyut();
+                num = 0;
             }
         }
 
@@ -1880,6 +1936,15 @@ namespace yutgame
             }
 
         }
+
+        void Switchon()
+        {
+            this.Invoke(new MethodInvoker(delegate ()
+            {
+                btnThrow.Enabled = true;
+                return;
+            }));
+        }
         void Receiveyut()
         {
             try
@@ -1930,6 +1995,7 @@ namespace yutgame
                                 lastShortCutCheck1 = 1;
                             Message("상대방이 " + yutInfo + "가 나왔습니다!");
                             Blue1(aa);
+                            Switchon();
                             break;
                         case 2:
                             if (cc == 1)
@@ -1940,6 +2006,7 @@ namespace yutgame
                                 lastShortCutCheck2 = 1;
                             Message("상대방이 " + yutInfo + "가 나왔습니다!");
                             Blue2(aa);
+                            Switchon();
                             break;
                         case 3:
                             if (cc == 1)
@@ -1950,6 +2017,7 @@ namespace yutgame
                                 lastShortCutCheck3 = 1;
                             Message("상대방이 " + yutInfo + "가 나왔습니다!");
                             Red1(aa);
+                            Switchon();
                             break;
                         case 4:
                             if (cc == 1)
@@ -1960,13 +2028,14 @@ namespace yutgame
                                 lastShortCutCheck4 = 1;
                             Message("상대방이 " + yutInfo + "가 나왔습니다!");
                             Red2(aa);
+                            Switchon();
                             break;
                     }
                 }
             }
             catch
             {
-                Message("데이터를 읽는 과정에서 오류가 발생");
+                Message("데이터를 읽는 과정에서 오류가 발생1");
 
             }
             
@@ -2027,3 +2096,6 @@ namespace yutgame
         }
     }
 }
+
+
+
