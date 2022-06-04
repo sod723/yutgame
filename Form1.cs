@@ -366,8 +366,33 @@ namespace yutgame
                             //백도 처리
                             if (outlineCnt1 == -1)
                             {
-                                horsePos1.Image = blue1;
+                                //업기
+                                if (horsePos1.Image == blue2)
+                                    blue = true;
+                                //잡기
+                                else if (horsePos1.Image == red1)
+                                {
+                                    clear(3);
+                                    Switchon();
+                                }
+                                else if (horsePos1.Image == red2)
+                                {
+                                    clear(4);
+                                    Switchon();
+                                }
+                                else if (horsePos1.Image == red_with)
+                                {
+                                    clear(3);
+                                    clear(4);
+                                    Switchon();
+                                }
+                                if (blue)
+                                    horsePos1.Image = blue_with;
+                                else
+                                    horsePos1.Image = blue1;
                                 outlineCnt1 = 20;
+                                if (blue)
+                                    outlineCnt2 = 20;
                             }
 
 
@@ -645,8 +670,33 @@ namespace yutgame
                             //백도 처리
                             if (outlineCnt2 == -1)
                             {
-                                horsePos1.Image = blue2;
+                                //업기
+                                if (horsePos1.Image == blue1)
+                                    blue = true;
+                                //잡기
+                                else if(horsePos1.Image == red1)
+                                {
+                                    clear(3);
+                                    Switchon();
+                                }
+                                else if(horsePos1.Image == red2)
+                                {
+                                    clear(4);
+                                    Switchon();
+                                }
+                                else if(horsePos1.Image == red_with)
+                                {
+                                    clear(3);
+                                    clear(4);
+                                    Switchon();
+                                }
+                                if (blue)
+                                    horsePos1.Image = blue_with;
+                                else
+                                    horsePos1.Image = blue2;
                                 outlineCnt2 = 20;
+                                if (blue)
+                                    outlineCnt1 = 20;
                             }
 
                             //1P의 돌이 2P의 돌을 만낫을때
@@ -953,8 +1003,33 @@ namespace yutgame
 
                             //백도 처리
                             if (outlineCnt3 == -1) {
-                                horsePos1.Image = red1;
+                                //업기
+                                if (horsePos1.Image == red2)
+                                    red = true;
+                                //잡기
+                                else if(horsePos1.Image == blue1)
+                                {
+                                    clear(1);
+                                    Switchon();
+                                }
+                                else if(horsePos1.Image == blue2)
+                                {
+                                    clear(2);
+                                    Switchon();
+                                }
+                                else if(horsePos1.Image == blue_with)
+                                {
+                                    clear(1);
+                                    clear(2);
+                                    Switchon();
+                                }
+                                if (red)
+                                    horsePos1.Image = red_with;
+                                else
+                                    horsePos1.Image = red1;
                                 outlineCnt3 = 20;
+                                if (red)
+                                    outlineCnt4 = 20;
                             } 
 
                             //2P의 돌이 1P의 돌을 만낫을때
@@ -1221,8 +1296,33 @@ namespace yutgame
 
                             //백도 처리
                             if (outlineCnt4 == -1) {
-                                horsePos1.Image = red2;
+                                //업기
+                                if (horsePos1.Image == red1)
+                                    red = true;
+                                //잡기
+                                else if(horsePos1.Image == blue1)
+                                {
+                                    clear(1);
+                                    Switchon();
+                                }
+                                else if(horsePos1.Image == blue2)
+                                {
+                                    clear(2);
+                                    Switchon();
+                                }
+                                else if(horsePos1.Image == blue_with)
+                                {
+                                    clear(1);
+                                    clear(2);
+                                    Switchon();
+                                }
+                                if (red)
+                                    horsePos1.Image = red_with;
+                                else
+                                    horsePos1.Image = red2;
                                 outlineCnt4 = 20;
+                                if (red)
+                                    outlineCnt3 = 20;
                             }
 
 
@@ -1468,87 +1568,110 @@ namespace yutgame
                 {
                     // 지름길 선택 여부
                     // 1번째지름길에 도착했을경우
-                    if (outlineCnt1 == 5) {
-                        if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) //지름길로 갈것인지 메세지를 띄움
+                    if (num != -1)
+                    {
+                        if (outlineCnt1 == 5)
                         {
-                            firstShortCutCheck1 = 1;
-                            if (blue) firstShortCutCheck2 = 1;
+                            if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) //지름길로 갈것인지 메세지를 띄움
+                            {
+                                firstShortCutCheck1 = 1;
+                                if (blue) firstShortCutCheck2 = 1;
+                            }
+                            else
+                            {
+                                firstShortCutCheck1 = 0;
+                                if (blue) firstShortCutCheck2 = 0;
+                            }
                         }
-                        else {
-                            firstShortCutCheck1 = 0;
-                            if (blue) firstShortCutCheck2 = 0;
+                        // 중앙 지름길에 도착했을경우
+                        if (firstShortCutCnt1 == 3)
+                        {
+                            if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                centerShortCutCheck1 = 1;
+                                firstShortCutCheck1 = -1;
+                                if (blue)
+                                {
+                                    centerShortCutCheck2 = 1;
+                                    firstShortCutCheck2 = -1;
+                                }
+                            }
+                            else
+                            {
+                                centerShortCutCheck1 = 0;
+                                if (blue) centerShortCutCheck2 = 0;
+                            }
+                        }
+                        // 2번째 지름길에 도착했을경우
+                        if (outlineCnt1 == 10)
+                        {
+                            if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                lastShortCutCheck1 = 1;
+                                if (blue) lastShortCutCheck2 = 1;
+                            }
+                            else
+                            {
+                                lastShortCutCheck1 = 0;
+                                if (blue) lastShortCutCheck2 = 0;
+                            }
                         }
                     }
-                    // 중앙 지름길에 도착했을경우
-                    if (firstShortCutCnt1 == 3) {
-                        if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) {
-                            centerShortCutCheck1 = 1;
-                            if (blue) centerShortCutCheck2 = 1;
-                        }
-                        else {
-                            centerShortCutCheck1 = 0;
-                            if (blue) centerShortCutCheck2 = 0;
-                        }
-                    }
-                    // 2번째 지름길에 도착했을경우
-                    if (outlineCnt1 == 10) {
-                        if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) {
-                            lastShortCutCheck1 = 1;
-                            if (blue) lastShortCutCheck2 = 1;
-                        }
-                        else {
-                            lastShortCutCheck1 = 0;
-                            if (blue) lastShortCutCheck2 = 0;
-                        }
-                    } 
                     Blue1(num);
                 }
                 if (btn == btnBlue2)
                 {
                     //지름길 선택 여부
-                    if (outlineCnt2 == 5)
+                    if (num != -1)
                     {
-                        if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) //지름길로 갈것인지 메세지를 띄움
+                        if (outlineCnt2 == 5)
                         {
-                            firstShortCutCheck2 = 1;
-                            if (blue)
-                                firstShortCutCheck1 = 1;
+                            if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) //지름길로 갈것인지 메세지를 띄움
+                            {
+                                firstShortCutCheck2 = 1;
+                                if (blue)
+                                    firstShortCutCheck1 = 1;
+                            }
+                            else
+                            {
+                                firstShortCutCheck2 = 0;
+                                if (blue)
+                                    firstShortCutCheck1 = 0;
+                            }
                         }
-                        else
+                        if (firstShortCutCnt2 == 3)
                         {
-                            firstShortCutCheck2 = 0;
-                            if (blue)
-                                firstShortCutCheck1 = 0;
+                            if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                centerShortCutCheck2 = 1;
+                                firstShortCutCheck2 = -1;
+                                if (blue)
+                                {
+                                    centerShortCutCheck1 = 1;
+                                    firstShortCutCheck1 = -1;
+                                }
+                            }
+                            else
+                            {
+                                centerShortCutCheck2 = 0;
+                                if (blue)
+                                    centerShortCutCheck1 = 0;
+                            }
                         }
-                    }
-                    if (firstShortCutCnt2 == 3)
-                    {
-                        if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (outlineCnt2 == 10)
                         {
-                            centerShortCutCheck2 = 1;
-                            if (blue)
-                                centerShortCutCheck1 = 1;
-                        }
-                        else
-                        {
-                            centerShortCutCheck2 = 0;
-                            if (blue)
-                                centerShortCutCheck1 = 0;
-                        }
-                    }
-                    if (outlineCnt2 == 10)
-                    {
-                        if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        {
-                            lastShortCutCheck2 = 1;
-                            if (blue)
-                                lastShortCutCheck1 = 1;
-                        }
-                        else
-                        {
-                            lastShortCutCheck2 = 0;
-                            if (blue)
-                                lastShortCutCheck1 = 0;
+                            if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                lastShortCutCheck2 = 1;
+                                if (blue)
+                                    lastShortCutCheck1 = 1;
+                            }
+                            else
+                            {
+                                lastShortCutCheck2 = 0;
+                                if (blue)
+                                    lastShortCutCheck1 = 0;
+                            }
                         }
                     }
                     Blue2(num);
@@ -1557,38 +1680,53 @@ namespace yutgame
                 {
                     // 지름길 선택 여부
                     // 1번째지름길에 도착했을경우
-                    if (outlineCnt3 == 5) {
-                        if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) //지름길로 갈것인지 메세지를 띄움
+                    if (num != -1)
+                    {
+                        if (outlineCnt3 == 5)
                         {
-                            firstShortCutCheck3 = 1;
-                            if (red) firstShortCutCheck4 = 1;
+                            if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) //지름길로 갈것인지 메세지를 띄움
+                            {
+                                firstShortCutCheck3 = 1;
+                                if (red) firstShortCutCheck4 = 1;
+                            }
+                            else
+                            {
+                                firstShortCutCheck3 = 0;
+                                if (red) firstShortCutCheck4 = 0;
+                            }
                         }
-                        else {
-                            firstShortCutCheck3 = 0;
-                            if (red) firstShortCutCheck4 = 0;
-                        }
-                    }
-                    // 중앙 지름길에 도착했을경우
-                    if (firstShortCutCnt3 == 3) {
-                        if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) {
-                            centerShortCutCheck3 = 1;
-                            if (red) centerShortCutCheck4 = 1;
-                        }
-                        else {
-                            centerShortCutCheck3 = 0;
-                            if (red) centerShortCutCheck4 = 0;
-                        }
-                    }
-                    // 2번째 지름길에 도착했을경우
-                    if (outlineCnt3 == 10) {
-                        if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        // 중앙 지름길에 도착했을경우
+                        if (firstShortCutCnt3 == 3)
                         {
-                            lastShortCutCheck3 = 1;
-                            if (red) lastShortCutCheck4 = 1;
+                            if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                centerShortCutCheck3 = 1;
+                                firstShortCutCheck3 = -1;
+                                if (red)
+                                {
+                                    centerShortCutCheck4 = 1;
+                                    firstShortCutCheck4 = -1;
+                                }
+                            }
+                            else
+                            {
+                                centerShortCutCheck3 = 0;
+                                if (red) centerShortCutCheck4 = 0;
+                            }
                         }
-                        else {
-                            lastShortCutCheck3 = 0;
-                            if (red) lastShortCutCheck4 = 0;
+                        // 2번째 지름길에 도착했을경우
+                        if (outlineCnt3 == 10)
+                        {
+                            if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                lastShortCutCheck3 = 1;
+                                if (red) lastShortCutCheck4 = 1;
+                            }
+                            else
+                            {
+                                lastShortCutCheck3 = 0;
+                                if (red) lastShortCutCheck4 = 0;
+                            }
                         }
                     }
                     Red1(num);
@@ -1597,48 +1735,59 @@ namespace yutgame
                 {
                     // 지름길 선택 여부
                     // 1번째지름길에 도착했을경우
-                    if (outlineCnt4 == 5) {
-                        if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) //지름길로 갈것인지 메세지를 띄움
-                        {
-                            firstShortCutCheck4 = 1;
-                            if (red) firstShortCutCheck3 = 1;
-                        }
-                        else {
-                            firstShortCutCheck4 = 0;
-                            if (red) firstShortCutCheck3 = 0;
-                        }
-                    }
-                    // 중앙 지름길에 도착했을경우
-                    if (firstShortCutCnt4 == 3)
+                    if (num != -1)
                     {
-                        if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (outlineCnt4 == 5)
                         {
-                            centerShortCutCheck4 = 1;
-                            if (red) centerShortCutCheck3 = 1;
+                            if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) //지름길로 갈것인지 메세지를 띄움
+                            {
+                                firstShortCutCheck4 = 1;
+                                if (red) firstShortCutCheck3 = 1;
+                            }
+                            else
+                            {
+                                firstShortCutCheck4 = 0;
+                                if (red) firstShortCutCheck3 = 0;
+                            }
                         }
-                        else
+                        // 중앙 지름길에 도착했을경우
+                        if (firstShortCutCnt4 == 3)
                         {
-                            centerShortCutCheck4 = 0;
-                            if (red) centerShortCutCheck3 = 0;
+                            if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                centerShortCutCheck4 = 1;
+                                firstShortCutCheck4 = -1;
+                                if (red)
+                                {
+                                    centerShortCutCheck3 = 1;
+                                    firstShortCutCheck3 = -1;
+                                }
+                            }
+                            else
+                            {
+                                centerShortCutCheck4 = 0;
+                                if (red) centerShortCutCheck3 = 0;
+                            }
                         }
-                    }
-                    // 2번째 지름길에 도착했을경우
-                    if (outlineCnt4 == 10)
-                    {
-                        if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        // 2번째 지름길에 도착했을경우
+                        if (outlineCnt4 == 10)
                         {
-                            lastShortCutCheck4 = 1;
-                            if (red) lastShortCutCheck3 = 1;
-                        }
-                        else
-                        {
-                            lastShortCutCheck4 = 0;
-                            if (red) lastShortCutCheck3 = 0;
+                            if (MessageBox.Show("지름길로 가시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                lastShortCutCheck4 = 1;
+                                if (red) lastShortCutCheck3 = 1;
+                            }
+                            else
+                            {
+                                lastShortCutCheck4 = 0;
+                                if (red) lastShortCutCheck3 = 0;
+                            }
                         }
                     }
                     Red2(num); 
                 }
-                Sendyut();
+                if(num != 0)
+                    Sendyut();
                 num = 0;
             }
         }
@@ -1875,6 +2024,11 @@ namespace yutgame
             try { 
                 int i;
                 int ShortCheck;
+                int TurnCheck;
+                if (btnThrow.Enabled == true)
+                    TurnCheck = 1;
+                else
+                    TurnCheck = 0;
                 if (bluehorse1 > 0)
                 {
                     i = 1;
@@ -1927,6 +2081,7 @@ namespace yutgame
                     m_Write2.WriteLine(num);
                     m_Write2.WriteLine(i);
                     m_Write2.WriteLine(ShortCheck);
+                    m_Write2.WriteLine(TurnCheck);
                     m_Write2.Flush();
                 } 
             }
@@ -1945,6 +2100,16 @@ namespace yutgame
                 return;
             }));
         }
+
+        void Switchoff()
+        {
+            this.Invoke(new MethodInvoker(delegate ()
+            {
+                btnThrow.Enabled = false;
+                return;
+            }));
+        }
+
         void Receiveyut()
         {
             try
@@ -1956,10 +2121,12 @@ namespace yutgame
                     // 말정보 : 1,2,3,4,
                     string b = m_Read2.ReadLine();
                     string c = m_Read2.ReadLine();
+                    //턴 정보 : 0,1
+                    string t = m_Read2.ReadLine();
                     int aa = Int32.Parse(a);
                     int bb = Int32.Parse(b);
                     int cc = Int32.Parse(c);
-
+                    int tt = Int32.Parse(t);
 
                     string yutInfo=null;
                     switch (aa)
@@ -1995,7 +2162,10 @@ namespace yutgame
                                 lastShortCutCheck1 = 1;
                             Message("상대방이 " + yutInfo + "가 나왔습니다!");
                             Blue1(aa);
-                            Switchon();
+                            if (tt == 0)
+                                Switchon();
+                            else
+                                Switchoff();
                             break;
                         case 2:
                             if (cc == 1)
@@ -2006,7 +2176,10 @@ namespace yutgame
                                 lastShortCutCheck2 = 1;
                             Message("상대방이 " + yutInfo + "가 나왔습니다!");
                             Blue2(aa);
-                            Switchon();
+                            if (tt == 0)
+                                Switchon();
+                            else
+                                Switchoff();
                             break;
                         case 3:
                             if (cc == 1)
@@ -2017,7 +2190,10 @@ namespace yutgame
                                 lastShortCutCheck3 = 1;
                             Message("상대방이 " + yutInfo + "가 나왔습니다!");
                             Red1(aa);
-                            Switchon();
+                            if (tt == 0)
+                                Switchon();
+                            else
+                                Switchoff();
                             break;
                         case 4:
                             if (cc == 1)
@@ -2028,7 +2204,10 @@ namespace yutgame
                                 lastShortCutCheck4 = 1;
                             Message("상대방이 " + yutInfo + "가 나왔습니다!");
                             Red2(aa);
-                            Switchon();
+                            if (tt == 0)
+                                Switchon();
+                            else
+                                Switchoff();
                             break;
                     }
                 }
