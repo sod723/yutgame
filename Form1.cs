@@ -285,7 +285,7 @@ namespace yutgame
         private void btnThrow_Click(object sender, EventArgs e)
         {
             Random rand = new Random();
-            yutnum = rand.Next(16);
+            yutnum = rand.Next(16) + 1;
 
             if (yutnum == 1) // 빽도
             {
@@ -458,7 +458,6 @@ namespace yutgame
                                     firstShortCutCnt1 = 0;
                                     outlineCnt1 = 4;
                                     firstShortCutCheck1 = 0;
-                                    //pb1[outlineCnt1].Image = blue1;
                                     if (blue)
                                     {
                                         outlineCnt2 = 4;
@@ -565,7 +564,6 @@ namespace yutgame
                                     Switchon();
                                 }
                             }
-
                             if (pb3[3 + centerShortCutCnt1].Image == (Image)blue2) {
                                 blue = true;
                             }
@@ -978,7 +976,6 @@ namespace yutgame
                                     Switchon();
                                 }
                             }
-
                             if (pb3[3 + centerShortCutCnt2].Image == (Image)blue1)
                             {
                                 blue = true;
@@ -1008,8 +1005,6 @@ namespace yutgame
                         else if (centerShortCutCheck2 == 0 && blue) pb2[firstShortCutCnt2].Image = (Image)blue_with;
                         else if (blue) pb3[3 + centerShortCutCnt2].Image = (Image)blue_with;
                         else pb3[3 + centerShortCutCnt2].Image = (Image)blue2;
-
-
                     }
                 }
 
@@ -1381,7 +1376,6 @@ namespace yutgame
                                     Switchon();
                                 }
                             }
-
                             if (pb3[3 + centerShortCutCnt3].Image == (Image)red2) {
                                 red = true;
                             }
@@ -1794,7 +1788,6 @@ namespace yutgame
                         else if (centerShortCutCheck4 == 0 && red) pb2[firstShortCutCnt4].Image = (Image)red_with;
                         else if (red) pb3[3 + centerShortCutCnt4].Image = (Image)red_with;
                         else pb3[3 + centerShortCutCnt4].Image = (Image)red2;
-
                     }
                 }
 
@@ -2522,65 +2515,69 @@ namespace yutgame
                             break;
                     }
 
-                    switch (bb)
+                    this.Invoke(new MethodInvoker(delegate ()
                     {
-                        case 1:
-                            if (cc == 1)
-                                firstShortCutCheck1 = 1;
-                            else if (cc == 2)
-                                centerShortCutCheck1 = 1;
-                            else if (cc == 3)
-                                lastShortCutCheck1 = 1;
-                            Message("상대방이 " + yutInfo + "가 나왔습니다!");
-                            Blue1(aa);
-                            if (tt == 0)
-                                Switchon();
-                            else
-                                Switchoff();
-                            break;
-                        case 2:
-                            if (cc == 1)
-                                firstShortCutCheck2 = 1;
-                            else if (cc == 2)
-                                centerShortCutCheck2 = 1;
-                            else if (cc == 3)
-                                lastShortCutCheck2 = 1;
-                            Message("상대방이 " + yutInfo + "가 나왔습니다!");
-                            Blue2(aa);
-                            if (tt == 0)
-                                Switchon();
-                            else
-                                Switchoff();
-                            break;
-                        case 3:
-                            if (cc == 1)
-                                firstShortCutCheck3 = 1;
-                            else if (cc == 2)
-                                centerShortCutCheck3 = 1;
-                            else if (cc == 3)
-                                lastShortCutCheck3 = 1;
-                            Message("상대방이 " + yutInfo + "가 나왔습니다!");
-                            Red1(aa);
-                            if (tt == 0)
-                                Switchon();
-                            else
-                                Switchoff();
-                            break;
-                        case 4:
-                            if (cc == 1)
-                                firstShortCutCheck4 = 1;
-                            else if (cc == 2)
-                                centerShortCutCheck4 = 1;
-                            else if (cc == 3)
-                                lastShortCutCheck4 = 1;
-                            Message("상대방이 " + yutInfo + "가 나왔습니다!");
-                            Red2(aa);
-                            if (tt == 0)
-                                Switchon();
-                            else
-                                Switchoff();
-                            break;
-                    }
+                        switch (bb)
+                        {
+                            case 1:
+                                if (cc == 1)
+                                    firstShortCutCheck1 = 1;
+                                else if (cc == 2)
+                                    centerShortCutCheck1 = 1;
+                                else if (cc == 3)
+                                    lastShortCutCheck1 = 1;
+                                Message("상대방이 " + yutInfo + "이(가) 나왔습니다!");
+                                Blue1(aa);
+                                if (tt == 0)
+                                    Switchon();
+                                else
+                                    Switchoff();
+                                break;
+                            case 2:
+                                if (cc == 1)
+                                    firstShortCutCheck2 = 1;
+                                else if (cc == 2)
+                                    centerShortCutCheck2 = 1;
+                                else if (cc == 3)
+                                    lastShortCutCheck2 = 1;
+                                Message("상대방이 " + yutInfo + "이(가) 나왔습니다!");
+                                Blue2(aa);
+                                if (tt == 0)
+                                    Switchon();
+                                else
+                                    Switchoff();
+                                break;
+                            case 3:
+                                if (cc == 1)
+                                    firstShortCutCheck3 = 1;
+                                else if (cc == 2)
+                                    centerShortCutCheck3 = 1;
+                                else if (cc == 3)
+                                    lastShortCutCheck3 = 1;
+                                Message("상대방이 " + yutInfo + "이(가) 나왔습니다!");
+                                Red1(aa);
+                                if (tt == 0)
+                                    Switchon();
+                                else
+                                    Switchoff();
+                                break;
+                            case 4:
+                                if (cc == 1)
+                                    firstShortCutCheck4 = 1;
+                                else if (cc == 2)
+                                    centerShortCutCheck4 = 1;
+                                else if (cc == 3)
+                                    lastShortCutCheck4 = 1;
+                                Message("상대방이 " + yutInfo + "이(가) 나왔습니다!");
+                                Red2(aa);
+                                if (tt == 0)
+                                    Switchon();
+                                else
+                                    Switchoff();
+                                break;
+                        }
+                        return;
+                    }));
                 }
             }
             catch
@@ -2628,11 +2625,7 @@ namespace yutgame
                 Send();
         }
 
-        private void Servercnt_Click(object sender, EventArgs e)
-        {
-            Form2 fm2 = new Form2();
-            fm2.Show();
-        }
+
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -2644,8 +2637,6 @@ namespace yutgame
         {
             e.Handled = true;
         }
-
-        
     }
 }
 
