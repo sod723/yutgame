@@ -287,7 +287,44 @@ namespace yutgame
             Random rand = new Random();
             yutnum = rand.Next(16) + 1;
 
-            if (yutnum == 1) // 빽도
+            if (cmbYut.SelectedIndex == 1)
+            {
+                MessageBox.Show("빽도!!");
+                num = -1;
+                btnThrow.Enabled = false;
+            }
+            else if (cmbYut.SelectedIndex == 2)
+            {
+                MessageBox.Show("도!!");
+                num = 1;
+                btnThrow.Enabled = false;
+            }
+            else if (cmbYut.SelectedIndex == 3)
+            {
+                MessageBox.Show("개!!");
+                num = 2;
+                btnThrow.Enabled = false;
+            }
+            else if (cmbYut.SelectedIndex == 4)
+            {
+                MessageBox.Show("걸!!");
+                num = 3;
+                btnThrow.Enabled = false;
+            }
+            else if (cmbYut.SelectedIndex == 5)
+            {
+                MessageBox.Show("윷!! 한번 더!!!");
+                num = 4;
+                btnThrow.Enabled = true;
+            }
+            else if (cmbYut.SelectedIndex == 6)
+            {
+                MessageBox.Show("모!! 한번 더!!!");
+                btnThrow.Enabled = true;
+                num = 5;
+            }
+
+           else  if (yutnum == 1) // 빽도
             {
                 MessageBox.Show("빽도!!");
                 num = -1;
