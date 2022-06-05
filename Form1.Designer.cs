@@ -80,7 +80,6 @@ namespace yutgame
             this.horsePos3 = new System.Windows.Forms.PictureBox();
             this.horsePos2 = new System.Windows.Forms.PictureBox();
             this.horsePos1 = new System.Windows.Forms.PictureBox();
-            this.Servercnt = new System.Windows.Forms.Button();
             this.IP = new System.Windows.Forms.Label();
             this.PORT = new System.Windows.Forms.Label();
             this.btn_Server = new System.Windows.Forms.Button();
@@ -88,6 +87,7 @@ namespace yutgame
             this.PORT_Number = new System.Windows.Forms.TextBox();
             this.IP_Address = new System.Windows.Forms.TextBox();
             this.Send_Message = new System.Windows.Forms.Button();
+            this.cmbYut = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.not7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.not6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.not5)).BeginInit();
@@ -616,17 +616,6 @@ namespace yutgame
             this.horsePos1.TabIndex = 0;
             this.horsePos1.TabStop = false;
             // 
-            // Servercnt
-            // 
-            this.Servercnt.Location = new System.Drawing.Point(798, 309);
-            this.Servercnt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Servercnt.Name = "Servercnt";
-            this.Servercnt.Size = new System.Drawing.Size(86, 29);
-            this.Servercnt.TabIndex = 39;
-            this.Servercnt.Text = "서버 현황";
-            this.Servercnt.UseVisualStyleBackColor = true;
-            this.Servercnt.Click += new System.EventHandler(this.Servercnt_Click);
-            // 
             // IP
             // 
             this.IP.AutoSize = true;
@@ -694,11 +683,28 @@ namespace yutgame
             this.Send_Message.UseVisualStyleBackColor = true;
             this.Send_Message.Click += new System.EventHandler(this.Send_Message_Click);
             // 
+            // cmbYut
+            // 
+            this.cmbYut.FormattingEnabled = true;
+            this.cmbYut.Items.AddRange(new object[] {
+            "X",
+            "빽도",
+            "도",
+            "개",
+            "걸",
+            "윷",
+            "모"});
+            this.cmbYut.Location = new System.Drawing.Point(813, 315);
+            this.cmbYut.Name = "cmbYut";
+            this.cmbYut.Size = new System.Drawing.Size(86, 23);
+            this.cmbYut.TabIndex = 47;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 641);
+            this.Controls.Add(this.cmbYut);
             this.Controls.Add(this.Send_Message);
             this.Controls.Add(this.IP_Address);
             this.Controls.Add(this.PORT_Number);
@@ -706,7 +712,6 @@ namespace yutgame
             this.Controls.Add(this.btn_Server);
             this.Controls.Add(this.PORT);
             this.Controls.Add(this.IP);
-            this.Controls.Add(this.Servercnt);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
@@ -823,7 +828,6 @@ namespace yutgame
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ImageList imgCharacter;
-        private System.Windows.Forms.Button Servercnt;
         private System.Windows.Forms.Label IP;
         private System.Windows.Forms.Label PORT;
         private System.Windows.Forms.Button btn_Server;
@@ -831,6 +835,7 @@ namespace yutgame
         private System.Windows.Forms.TextBox PORT_Number;
         private System.Windows.Forms.TextBox IP_Address;
         public System.Windows.Forms.Button Send_Message;
+        private System.Windows.Forms.ComboBox cmbYut;
     }
 }
 
