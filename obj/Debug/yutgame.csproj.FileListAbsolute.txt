@@ -77,3 +77,13 @@ C:\새 폴더\obj\Debug\yutgame.csproj.GenerateResource.cache
 C:\새 폴더\obj\Debug\yutgame.csproj.CoreCompileInputs.cache
 C:\새 폴더\obj\Debug\yutgame.exe
 C:\새 폴더\obj\Debug\yutgame.pdb
+C:\Users\sungm\source\repos\진짜 마지막 yutgame-main\yutgame-main\bin\Debug\yutgame.exe.config
+C:\Users\sungm\source\repos\진짜 마지막 yutgame-main\yutgame-main\bin\Debug\yutgame.exe
+C:\Users\sungm\source\repos\진짜 마지막 yutgame-main\yutgame-main\bin\Debug\yutgame.pdb
+C:\Users\sungm\source\repos\진짜 마지막 yutgame-main\yutgame-main\obj\Debug\yutgame.csproj.AssemblyReference.cache
+C:\Users\sungm\source\repos\진짜 마지막 yutgame-main\yutgame-main\obj\Debug\yutgame.Form1.resources
+C:\Users\sungm\source\repos\진짜 마지막 yutgame-main\yutgame-main\obj\Debug\yutgame.Properties.Resources.resources
+C:\Users\sungm\source\repos\진짜 마지막 yutgame-main\yutgame-main\obj\Debug\yutgame.csproj.GenerateResource.cache
+C:\Users\sungm\source\repos\진짜 마지막 yutgame-main\yutgame-main\obj\Debug\yutgame.csproj.CoreCompileInputs.cache
+C:\Users\sungm\source\repos\진짜 마지막 yutgame-main\yutgame-main\obj\Debug\yutgame.exe
+C:\Users\sungm\source\repos\진짜 마지막 yutgame-main\yutgame-main\obj\Debug\yutgame.pdb

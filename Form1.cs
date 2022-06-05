@@ -285,7 +285,7 @@ namespace yutgame
         private void btnThrow_Click(object sender, EventArgs e)
         {
             Random rand = new Random();
-            yutnum = rand.Next(16);
+            yutnum = rand.Next(16) + 1;
 
             if (yutnum == 1) // 빽도
             {
@@ -373,17 +373,20 @@ namespace yutgame
                                 else if (horsePos1.Image == red1)
                                 {
                                     clear(3);
+                                    MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
                                     Switchon();
                                 }
                                 else if (horsePos1.Image == red2)
                                 {
                                     clear(4);
+                                    MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
                                     Switchon();
                                 }
                                 else if (horsePos1.Image == red_with)
                                 {
                                     clear(3);
                                     clear(4);
+                                    MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
                                     Switchon();
                                 }
                                 if (blue)
@@ -452,13 +455,36 @@ namespace yutgame
                                 //대각선 백도
                                 if (firstShortCutCnt1 == -1)
                                 {
-                                    firstShortCutCnt1 = 0;                                   
-                                    outlineCnt1 = 5;
-                                    pb1[outlineCnt1].Image = blue1;
+                                    firstShortCutCnt1 = 0;
+                                    outlineCnt1 = 4;
+                                    firstShortCutCheck1 = 0;
                                     if (blue)
                                     {
-                                        outlineCnt2 = 5;
+                                        outlineCnt2 = 4;
                                         firstShortCutCnt2 = 0;
+                                        firstShortCutCheck2 = 0;
+                                    }
+                                    if (pb1[outlineCnt1].Image == blue2)
+                                        blue = true;
+                                    if (pb1[outlineCnt1].Image == red1)
+                                    {
+                                        MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                        clear(3);
+                                        Switchon();
+                                    }
+                                    if (pb1[outlineCnt1].Image == red2)
+                                    {
+                                        MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                        clear(4);
+                                        Switchon();
+                                    }
+                                    if (pb1[outlineCnt1].Image == red_with)
+                                    {
+                                        MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                        clear(3);
+                                        clear(4);
+                                        red = false;
+                                        Switchon();
                                     }
                                 }
                                 if (pb2[firstShortCutCnt1].Image == (Image)blue2) blue = true;
@@ -481,7 +507,9 @@ namespace yutgame
                                     red = false;
                                 }
                             }
-                            if (blue) pb2[firstShortCutCnt1].Image = (Image)blue_with;
+                            if (firstShortCutCheck1 == 0 && !blue) pb1[outlineCnt1].Image = (Image)blue1;
+                            else if (firstShortCutCheck1 == 0 && blue) pb1[outlineCnt1].Image = (Image)blue_with;
+                            else if (blue) pb2[firstShortCutCnt1].Image = (Image)blue_with;
                             else pb2[firstShortCutCnt1].Image = (Image)blue1;
                         }
                     }
@@ -501,6 +529,41 @@ namespace yutgame
 
                         if (centerShortCutCnt1 < 4)
                         {
+                            //대각선 빽도
+                            if (centerShortCutCnt1 == -1)
+                            {
+                                centerShortCutCheck1 = 0;
+                                centerShortCutCnt1 = 0;
+                                firstShortCutCnt1 = 2;
+                                if (blue)
+                                {
+                                    centerShortCutCheck2 = 0;
+                                    centerShortCutCnt2 = 0;
+                                    firstShortCutCnt2 = 2;
+                                }
+                                if (pb2[firstShortCutCnt1].Image == blue2)
+                                    blue = true;
+                                if (pb1[firstShortCutCnt1].Image == red1)
+                                {
+                                    MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                    clear(3);
+                                    Switchon();
+                                }
+                                if (pb1[firstShortCutCnt1].Image == red2)
+                                {
+                                    MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                    clear(4);
+                                    Switchon();
+                                }
+                                if (pb1[firstShortCutCnt1].Image == red_with)
+                                {
+                                    MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                    clear(3);
+                                    clear(4);
+                                    red = false;
+                                    Switchon();
+                                }
+                            }
                             if (pb3[3 + centerShortCutCnt1].Image == (Image)blue2) {
                                 blue = true;
                             }
@@ -522,7 +585,9 @@ namespace yutgame
                                 red = false;
                             }
                         }
-                        if (blue) pb3[3 + centerShortCutCnt1].Image = (Image)blue_with;
+                        if (centerShortCutCheck1 == 0 && !blue) pb2[firstShortCutCnt1].Image = (Image)blue1;
+                        else if (centerShortCutCheck1 == 0 && blue) pb2[firstShortCutCnt1].Image = (Image)blue_with;
+                        else if (blue) pb3[3 + centerShortCutCnt1].Image = (Image)blue_with;
                         else pb3[3 + centerShortCutCnt1].Image = (Image)blue1;
                     }
                 }
@@ -543,15 +608,39 @@ namespace yutgame
 
                         if (lastShortCutCnt1 < 7) {
 
+                            //대각선 빽도
                             if (lastShortCutCnt1 == -1)
                             {
+                                lastShortCutCheck1 = 0;
                                 lastShortCutCnt1 = 0;
-                                outlineCnt1 = 10;
-                                pb1[outlineCnt1].Image = blue1;
+                                outlineCnt1 = 9;
                                 if (blue)
                                 {
-                                    outlineCnt2 = 10;
+                                    outlineCnt2 = 9;
                                     lastShortCutCnt2 = 0;
+                                    lastShortCutCheck2 = 0;
+                                }
+                                if (pb1[outlineCnt1].Image == blue2)
+                                    blue = true;
+                                if (pb1[outlineCnt1].Image == red1)
+                                {
+                                    MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                    clear(3);
+                                    Switchon();
+                                }
+                                if (pb1[outlineCnt1].Image == red2)
+                                {
+                                    MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                    clear(4);
+                                    Switchon();
+                                }
+                                if (pb1[outlineCnt1].Image == red_with)
+                                {
+                                    MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                    clear(3);
+                                    clear(4);
+                                    red = false;
+                                    Switchon();
                                 }
                             }
 
@@ -576,7 +665,9 @@ namespace yutgame
                                 red = false;
                             }
                         }
-                        if (blue) pb3[lastShortCutCnt1].Image = (Image)blue_with;
+                        if (lastShortCutCheck1 == 0 && !blue) pb1[outlineCnt1].Image = (Image)blue1;
+                        else if (lastShortCutCheck1 == 0 && blue) pb1[outlineCnt1].Image = (Image)blue_with;
+                        else if (blue) pb3[lastShortCutCnt1].Image = (Image)blue_with;
                         else pb3[lastShortCutCnt1].Image = (Image)blue1;
                     }
                 }
@@ -677,17 +768,20 @@ namespace yutgame
                                 else if(horsePos1.Image == red1)
                                 {
                                     clear(3);
+                                    MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
                                     Switchon();
                                 }
                                 else if(horsePos1.Image == red2)
                                 {
                                     clear(4);
+                                    MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
                                     Switchon();
                                 }
                                 else if(horsePos1.Image == red_with)
                                 {
                                     clear(3);
                                     clear(4);
+                                    MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
                                     Switchon();
                                 }
                                 if (blue)
@@ -757,16 +851,41 @@ namespace yutgame
                             
                             if (firstShortCutCnt2 < 12)
                             {
+                                //대각선 백도
                                 if (firstShortCutCnt2 == -1)
                                 {
                                     firstShortCutCnt2 = 0;
-                                    pb2[outlineCnt2].Image = null;
-                                    outlineCnt2 = 5;
-                                    pb1[outlineCnt2].Image = blue2;
+                                    outlineCnt2 = 4;
+                                    firstShortCutCheck2 = 0;
                                     if (blue)
                                     {
-                                        outlineCnt1 = 5;
+                                        outlineCnt1 = 4;
                                         firstShortCutCnt1 = 0;
+                                        firstShortCutCheck1 = 0;
+                                    }
+                                    if (pb1[outlineCnt2].Image == blue1)
+                                        blue = true;
+                                    if (pb1[outlineCnt2].Image == (Image)red1)
+                                    {
+                                        MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                        clear(3);
+                                        Switchon();
+
+                                    }
+                                    if (pb1[outlineCnt2].Image == (Image)red2) // 1P의 돌이 2P의 두번째돌을 만났을때
+                                    {
+                                        clear(4);
+                                        MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                        Switchon();
+                                    }
+                                    if (pb1[outlineCnt2].Image == (Image)red_with)
+                                    {
+                                        MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                        clear(4);
+                                        clear(3);
+                                        red = false;
+                                        Switchon();
+
                                     }
                                 }
                                 if (pb2[firstShortCutCnt2].Image == (Image)blue1) blue = true;
@@ -795,7 +914,9 @@ namespace yutgame
                                     red = false;
                                 }
                             }
-                            if (blue) pb2[firstShortCutCnt2].Image = (Image)blue_with;
+                            if (firstShortCutCheck2 == 0 && !blue) pb1[outlineCnt2].Image = (Image)blue2;
+                            else if (firstShortCutCheck2 == 0 && blue) pb1[outlineCnt2].Image = (Image)blue_with;
+                            else if (blue) pb2[firstShortCutCnt2].Image = (Image)blue_with;
                             else pb2[firstShortCutCnt2].Image = (Image)blue2;
                         }
                     }
@@ -820,6 +941,41 @@ namespace yutgame
                        
                         if (centerShortCutCnt2 < 4)
                         {
+                            //대각선 빽도
+                            if (centerShortCutCnt2 == -1)
+                            {
+                                centerShortCutCheck2 = 0;
+                                centerShortCutCnt2 = 0;
+                                firstShortCutCnt2 = 2;
+                                if (blue)
+                                {
+                                    centerShortCutCheck1 = 0;
+                                    centerShortCutCnt1 = 0;
+                                    firstShortCutCnt1 = 2;
+                                }
+                                if (pb2[firstShortCutCnt2].Image == blue1)
+                                    blue = true;
+                                if (pb1[firstShortCutCnt2].Image == (Image)red1)
+                                {
+                                    MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                    clear(3);
+                                    Switchon();
+                                }
+                                if (pb1[firstShortCutCnt2].Image == (Image)red2) // 1P의 돌이 2P의 두번째돌을 만났을때
+                                {
+                                    clear(4);
+                                    MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                    Switchon();
+                                }
+                                if (pb1[firstShortCutCnt2].Image == (Image)red_with)
+                                {
+                                    MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다.");
+                                    clear(4);
+                                    clear(3);
+                                    red = false;
+                                    Switchon();
+                                }
+                            }
                             if (pb3[3 + centerShortCutCnt2].Image == (Image)blue1)
                             {
                                 blue = true;
@@ -845,10 +1001,10 @@ namespace yutgame
                                 red = false;
                             }
                         }
-                        if (blue) pb3[3 + centerShortCutCnt2].Image = (Image)blue_with;
+                        if (centerShortCutCheck2 == 0 && !blue) pb2[firstShortCutCnt2].Image = (Image)blue2;
+                        else if (centerShortCutCheck2 == 0 && blue) pb2[firstShortCutCnt2].Image = (Image)blue_with;
+                        else if (blue) pb3[3 + centerShortCutCnt2].Image = (Image)blue_with;
                         else pb3[3 + centerShortCutCnt2].Image = (Image)blue2;
-
-
                     }
                 }
 
@@ -871,15 +1027,39 @@ namespace yutgame
 
                         if (lastShortCutCnt2 < 7)
                         {
+                            //대각선 빽도
                             if (lastShortCutCnt2 == -1)
                             {
+                                lastShortCutCheck2 = 0;
                                 lastShortCutCnt2 = 0;
-                                outlineCnt2 = 10;
-                                pb1[outlineCnt2].Image = blue2;
+                                outlineCnt2 = 9;
                                 if (blue)
                                 {
-                                    outlineCnt1 = 10;
+                                    outlineCnt1 = 9;
                                     lastShortCutCnt1 = 0;
+                                    lastShortCutCheck1 = 0;
+                                }
+                                if (pb1[outlineCnt2].Image == blue1)
+                                    blue = true;
+                                if (pb3[outlineCnt2].Image == (Image)red1)
+                                {
+                                    MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
+                                    clear(3);
+                                    Switchon();
+                                }
+                                if (pb3[outlineCnt2].Image == (Image)red2)
+                                {
+                                    MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
+                                    clear(4);
+                                    Switchon();
+                                }
+                                if (pb3[outlineCnt2].Image == (Image)red_with)
+                                {
+                                    MessageBox.Show("빨간돌이 파란돌에게 먹혔습니다");
+                                    clear(3);
+                                    clear(4);
+                                    red = false;
+                                    Switchon();
                                 }
                             }
                             if (pb3[lastShortCutCnt2].Image == (Image)blue1)
@@ -910,7 +1090,9 @@ namespace yutgame
                                 red = false;
                             }
                         }
-                        if (blue)
+                        if (lastShortCutCheck2 == 0 && !blue) pb1[outlineCnt2].Image = (Image)blue2;
+                        else if (lastShortCutCheck2 == 0 && blue) pb1[outlineCnt2].Image = (Image)blue_with;
+                        else if (blue)
                             pb3[lastShortCutCnt2].Image = (Image)blue_with;
                         else
                             pb3[lastShortCutCnt2].Image = (Image)blue2;
@@ -1010,17 +1192,20 @@ namespace yutgame
                                 else if(horsePos1.Image == blue1)
                                 {
                                     clear(1);
+                                    MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
                                     Switchon();
                                 }
                                 else if(horsePos1.Image == blue2)
                                 {
                                     clear(2);
+                                    MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
                                     Switchon();
                                 }
                                 else if(horsePos1.Image == blue_with)
                                 {
                                     clear(1);
                                     clear(2);
+                                    MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
                                     Switchon();
                                 }
                                 if (red)
@@ -1078,15 +1263,39 @@ namespace yutgame
                             if (red) firstShortCutCnt4 += num;
 
                             if (firstShortCutCnt3 < 12) {
+                                //대각선 백도
                                 if (firstShortCutCnt3 == -1)
                                 {
                                     firstShortCutCnt3 = 0;
-                                    outlineCnt3 = 5;
-                                    pb1[outlineCnt3].Image = red1;
+                                    outlineCnt3 = 4;
+                                    firstShortCutCheck3 = 0;
                                     if (red)
                                     {
-                                        outlineCnt4 = 5;
+                                        outlineCnt4 = 4;
                                         firstShortCutCnt4 = 0;
+                                        firstShortCutCheck4 = 0;
+                                    }
+                                    if (pb1[outlineCnt3].Image == red2)
+                                        red = true;
+                                    if (pb1[outlineCnt3].Image == (Image)blue1)
+                                    {
+                                        MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                        clear(1);
+                                        Switchon();
+                                    }
+                                    if (pb1[outlineCnt3].Image == (Image)blue2)
+                                    {
+                                        MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                        clear(2);
+                                        Switchon();
+                                    }
+                                    if (pb1[outlineCnt3].Image == (Image)blue_with)
+                                    {
+                                        MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                        clear(1);
+                                        clear(2);
+                                        blue = false;
+                                        Switchon();
                                     }
                                 }
                                 if (pb2[firstShortCutCnt3].Image == (Image)red2) {
@@ -1110,7 +1319,9 @@ namespace yutgame
                                     blue = false;
                                 }
                             }
-                            if (red) pb2[firstShortCutCnt3].Image = (Image)red_with;
+                            if (firstShortCutCheck3 == 0 && !red) pb1[outlineCnt3].Image = (Image)red1;
+                            else if (firstShortCutCheck3 == 0 && red) pb1[outlineCnt3].Image = (Image)red_with;
+                            else if (red) pb2[firstShortCutCnt3].Image = (Image)red_with;
                             else pb2[firstShortCutCnt3].Image = (Image)red1;
                         }
                     }
@@ -1130,6 +1341,41 @@ namespace yutgame
                         if (red) centerShortCutCnt4 += num;
 
                         if (centerShortCutCnt3 < 4) {
+                            //대각선 빽도
+                            if (centerShortCutCnt3 == -1)
+                            {
+                                centerShortCutCheck3 = 0;
+                                centerShortCutCnt3 = 0;
+                                firstShortCutCnt3 = 2;
+                                if (red)
+                                {
+                                    centerShortCutCheck4 = 0;
+                                    centerShortCutCnt4 = 0;
+                                    firstShortCutCnt4 = 2;
+                                }
+                                if (pb2[firstShortCutCnt3].Image == red2)
+                                    red = true;
+                                if (pb1[firstShortCutCnt3].Image == (Image)blue1)
+                                {
+                                    MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                    clear(1);
+                                    Switchon();
+                                }
+                                if (pb1[firstShortCutCnt3].Image == (Image)blue2)
+                                {
+                                    MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                    clear(2);
+                                    Switchon();
+                                }
+                                if (pb1[firstShortCutCnt3].Image == (Image)blue_with)
+                                {
+                                    MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                    clear(1);
+                                    clear(2);
+                                    blue = false;
+                                    Switchon();
+                                }
+                            }
                             if (pb3[3 + centerShortCutCnt3].Image == (Image)red2) {
                                 red = true;
                             }
@@ -1152,8 +1398,10 @@ namespace yutgame
                                 blue = false;
                             }
                         }
-                        if (red) pb3[3 + centerShortCutCnt3].Image = (Image)red_with;
-                        else pb3[3 + centerShortCutCnt3].Image = (Image)red1; 
+                        if (centerShortCutCheck3 == 0 && !red) pb2[firstShortCutCnt3].Image = (Image)red1;
+                        else if (centerShortCutCheck3 == 0 && red) pb2[firstShortCutCnt3].Image = (Image)red_with;
+                        else if (red) pb3[3 + centerShortCutCnt3].Image = (Image)red_with;
+                        else pb3[3 + centerShortCutCnt3].Image = (Image)red1;
                     }
                 }
 
@@ -1170,15 +1418,39 @@ namespace yutgame
                         if (red) lastShortCutCnt4 += num;
 
                         if (lastShortCutCnt3 < 7) {
+                            //대각선 빽도
                             if (lastShortCutCnt3 == -1)
                             {
+                                lastShortCutCheck3 = 0;
                                 lastShortCutCnt3 = 0;
-                                outlineCnt3 = 10;
-                                pb1[outlineCnt3].Image = red1;
+                                outlineCnt3 = 9;
                                 if (red)
                                 {
-                                    outlineCnt4 = 10;
+                                    outlineCnt4 = 9;
                                     lastShortCutCnt4 = 0;
+                                    lastShortCutCheck4 = 0;
+                                }
+                                if (pb1[outlineCnt3].Image == red2)
+                                    red = true;
+                                if (pb1[outlineCnt3].Image == (Image)blue1)
+                                {
+                                    MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                    clear(1);
+                                    Switchon();
+                                }
+                                if (pb1[outlineCnt3].Image == (Image)blue2)
+                                {
+                                    MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                    clear(2);
+                                    Switchon();
+                                }
+                                if (pb1[outlineCnt3].Image == (Image)blue_with)
+                                {
+                                    MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                    clear(1);
+                                    clear(2);
+                                    blue = false;
+                                    Switchon();
                                 }
                             }
                             if (pb3[lastShortCutCnt3].Image == (Image)red2)
@@ -1203,7 +1475,9 @@ namespace yutgame
                                 blue = false;
                             }
                         }
-                        if (red) pb3[lastShortCutCnt3].Image = (Image)red_with;
+                        if (lastShortCutCheck3 == 0 && !red) pb1[outlineCnt3].Image = (Image)red1;
+                        else if (lastShortCutCheck3 == 0 && red) pb1[outlineCnt3].Image = (Image)red_with;
+                        else if (red) pb3[lastShortCutCnt3].Image = (Image)red_with;
                         else pb3[lastShortCutCnt3].Image = (Image)red1;
                     }
                 }
@@ -1303,17 +1577,20 @@ namespace yutgame
                                 else if(horsePos1.Image == blue1)
                                 {
                                     clear(1);
+                                    MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
                                     Switchon();
                                 }
                                 else if(horsePos1.Image == blue2)
                                 {
                                     clear(2);
+                                    MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
                                     Switchon();
                                 }
                                 else if(horsePos1.Image == blue_with)
                                 {
                                     clear(1);
                                     clear(2);
+                                    MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
                                     Switchon();
                                 }
                                 if (red)
@@ -1372,15 +1649,39 @@ namespace yutgame
                             if (red) firstShortCutCnt3 += num;
 
                             if (firstShortCutCnt4 < 12) {
+                                //대각선 백도
                                 if (firstShortCutCnt4 == -1)
                                 {
                                     firstShortCutCnt4 = 0;
-                                    outlineCnt4 = 5;
-                                    pb1[outlineCnt4].Image = red2;
+                                    outlineCnt4 = 4;
+                                    firstShortCutCheck4 = 0;
                                     if (red)
                                     {
-                                        outlineCnt3 = 5;
+                                        outlineCnt3 = 4;
                                         firstShortCutCnt3 = 0;
+                                        firstShortCutCheck3 = 0;
+                                    }
+                                    if (pb1[outlineCnt4].Image == red1)
+                                        red = true;
+                                    if (pb1[outlineCnt4].Image == (Image)blue1)
+                                    {
+                                        MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                        clear(1);
+                                        Switchon();
+                                    }
+                                    if (pb1[outlineCnt4].Image == (Image)blue2)
+                                    {
+                                        MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                        clear(2);
+                                        Switchon();
+                                    }
+                                    if (pb1[outlineCnt4].Image == (Image)blue_with)
+                                    {
+                                        MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                        clear(1);
+                                        clear(2);
+                                        blue = false;
+                                        Switchon();
                                     }
                                 }
                                 if (pb2[outlineCnt4].Image == (Image)red1) {
@@ -1404,7 +1705,9 @@ namespace yutgame
                                     blue = false;
                                 }
                             }
-                            if (red) pb2[firstShortCutCnt4].Image = (Image)red_with;
+                            if (firstShortCutCheck4 == 0 && !red) pb1[outlineCnt4].Image = (Image)red2;
+                            else if (firstShortCutCheck4 == 0 && red) pb1[outlineCnt4].Image = (Image)red_with;
+                            else if (red) pb2[firstShortCutCnt4].Image = (Image)red_with;
                             else pb2[firstShortCutCnt4].Image = (Image)red2;
                         }
                     }
@@ -1425,6 +1728,41 @@ namespace yutgame
                         
                         if (centerShortCutCnt4 < 4)
                         {
+                            //대각선 빽도
+                            if (centerShortCutCnt4 == -1)
+                            {
+                                centerShortCutCheck4 = 0;
+                                centerShortCutCnt4 = 0;
+                                firstShortCutCnt4 = 2;
+                                if (red)
+                                {
+                                    centerShortCutCheck3 = 0;
+                                    centerShortCutCnt3 = 0;
+                                    firstShortCutCnt3 = 2;
+                                }
+                                if (pb2[firstShortCutCnt4].Image == red1)
+                                    red = true;
+                                if (pb1[firstShortCutCnt4].Image == (Image)blue1)
+                                {
+                                    MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                    clear(1);
+                                    Switchon();
+                                }
+                                if (pb1[firstShortCutCnt4].Image == (Image)blue2)
+                                {
+                                    MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                    clear(2);
+                                    Switchon();
+                                }
+                                if (pb1[firstShortCutCnt4].Image == (Image)blue_with)
+                                {
+                                    MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                    clear(1);
+                                    clear(2);
+                                    blue = false;
+                                    Switchon();
+                                }
+                            }
                             if (pb3[3 + centerShortCutCnt4].Image == (Image)red1) {
                                 red = true;
                             }
@@ -1446,10 +1784,10 @@ namespace yutgame
                                 blue = false;
                             }
                         }
-                        if (red) pb3[3 + centerShortCutCnt4].Image = (Image)red_with;
+                        if (centerShortCutCheck4 == 0 && !red) pb2[firstShortCutCnt4].Image = (Image)red2;
+                        else if (centerShortCutCheck4 == 0 && red) pb2[firstShortCutCnt4].Image = (Image)red_with;
+                        else if (red) pb3[3 + centerShortCutCnt4].Image = (Image)red_with;
                         else pb3[3 + centerShortCutCnt4].Image = (Image)red2;
-
-
                     }
                 }
 
@@ -1467,15 +1805,39 @@ namespace yutgame
                         if (red) lastShortCutCnt3 += num;
 
                         if (lastShortCutCnt4 < 7) {
+                            //대각선 빽도
                             if (lastShortCutCnt4 == -1)
                             {
+                                lastShortCutCheck4 = 0;
                                 lastShortCutCnt4 = 0;
-                                outlineCnt4 = 10;
-                                pb1[outlineCnt4].Image = red2;
+                                outlineCnt4 = 9;
                                 if (red)
                                 {
-                                    outlineCnt3 = 10;
+                                    outlineCnt3 = 9;
                                     lastShortCutCnt3 = 0;
+                                    lastShortCutCheck3 = 0;
+                                }
+                                if (pb1[outlineCnt4].Image == red1)
+                                    red = true;
+                                if (pb1[outlineCnt4].Image == (Image)blue1)
+                                {
+                                    MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                    clear(1);
+                                    Switchon();
+                                }
+                                if (pb1[outlineCnt4].Image == (Image)blue2)
+                                {
+                                    MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                    clear(2);
+                                    Switchon();
+                                }
+                                if (pb1[outlineCnt4].Image == (Image)blue_with)
+                                {
+                                    MessageBox.Show("파란돌이 빨간돌에게 먹혔습니다");
+                                    clear(1);
+                                    clear(2);
+                                    blue = false;
+                                    Switchon();
                                 }
                             }
                             if (pb3[lastShortCutCnt4].Image == (Image)red1)
@@ -1500,7 +1862,9 @@ namespace yutgame
                                 blue = false;
                             }
                         }
-                        if (red) pb3[lastShortCutCnt4].Image = (Image)red_with;
+                        if (lastShortCutCheck4 == 0 && !red) pb1[outlineCnt4].Image = (Image)red2;
+                        else if (lastShortCutCheck4 == 0 && red) pb1[outlineCnt4].Image = (Image)red_with;
+                        else if (red) pb3[lastShortCutCnt4].Image = (Image)red_with;
                         else pb3[lastShortCutCnt4].Image = (Image)red2;
                     }
                 }
